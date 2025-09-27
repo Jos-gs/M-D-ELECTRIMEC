@@ -1,0 +1,315 @@
+/* Estilos para la página de Proyectos */
+.projects-page {
+    padding: 5rem 0;
+    background-color: var(--light-grey);
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+    color: #555;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+}
+
+.card-cta {
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-align: right;
+    transition: all 0.3s ease-in-out;
+}
+.project-card:hover .card-cta {
+    color: #e65c00;
+}
+.card-cta i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+.project-card:hover .card-cta i {
+    transform: translateX(5px);
+}
+
+/* --- Estilos de la Ventana Emergente (Modal) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 33, 66, 0.8);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close-button:hover {
+    color: var(--secondary-color);
+}
+
+.modal-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.modal-content h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Estilos para la página de Proyectos */
+.projects-page {
+    padding: 5rem 0;
+    background-color: var(--light-grey);
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+    color: #555;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+}
+
+.card-cta {
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-align: right;
+    transition: var(--transition-smooth);
+}
+.project-card:hover .card-cta {
+    color: #e65c00;
+}
+.card-cta i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+.project-card:hover .card-cta i {
+    transform: translateX(5px);
+}
+
+/* --- Estilos de la Ventana Emergente (Modal) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 33, 66, 0.8);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: slideIn 0.4s ease-out;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Para que no ocupe toda la pantalla en alto */
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close-button:hover {
+    color: var(--secondary-color);
+}
+
+.modal-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+#modal-text-content {
+    padding: 30px;
+    overflow-y: auto; /* Permite scroll si el texto es muy largo */
+}
+
+#modal-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#modal-description p, #modal-description li {
+    line-height: 1.8;
+    color: #333;
+}
+/* Estilo para las listas dentro del modal */
+#modal-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+#modal-description li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+#modal-description li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
