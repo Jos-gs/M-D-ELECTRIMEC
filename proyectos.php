@@ -32,15 +32,11 @@
             <ul class="nav-menu">
                 <li><a href="nosotros.php">Nosotros</a></li>
                 <li class="has-submenu">
-                    <a href="#">Negocios <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">Ingeniería</a></li>
-                        <li><a href="#">Fabricación</a></li>
-                    </ul>
+                    <a href="#">Negocios </a>
                 </li>
                 <li><a href="proyectos.php">Proyectos</a></li>
                 <li><a href="#">Noticias</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
         <a class="btn intranet" href="#">Intranet ›</a>
