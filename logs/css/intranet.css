@@ -1,0 +1,451 @@
+/* ==========================================================================
+   INTRANET — coherente con CONTACTO (paleta y componentes)
+   Depende de variables en :root de style.css (primary/secondary, etc.)
+   ========================================================================== */
+
+/* Sección principal */
+.login-section {
+  padding: 6rem 0;
+  background-color: var(--light-grey);
+}
+
+/* Layout similar a .contact-grid */
+.login-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .login-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Lado informativo (simétrico a contact-info) */
+.login-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin: 0 0 .5rem 0;
+}
+
+.login-lead {
+  color: #555;
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+/* Tarjetas de características (como .contact-card) */
+.login-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-card {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: .9rem;
+  background: var(--white-color);
+  border: 1px solid #e7e7e7;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: .95rem 1rem;
+}
+
+.login-card i {
+  color: var(--secondary-color);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.login-card h3 {
+  margin: 0 0 .25rem 0;
+  font-family: var(--font-heading);
+  font-size: .95rem;
+  color: var(--primary-color);
+}
+
+.login-card p {
+  margin: 0;
+}
+
+/* Formulario de login (como .contact-form .form) */
+.login-form-wrap .login-form {
+  background: var(--white-color);
+  border: 1px solid #e7e7e7;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+}
+
+.login-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.login-form label {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-size: .95rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  border: 1px solid #cfd6e4;
+  border-radius: var(--border-radius);
+  padding: .9rem .95rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: #fafcff;
+  color: var(--dark-grey);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.login-form input:focus {
+  border-color: var(--secondary-color);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, .15);
+}
+
+/* Alerta de error */
+.login-alert {
+  background: #fff2f2;
+  border: 1px solid #ffd4d4;
+  color: #a10f2b;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 4px 0 10px 0;
+  font-size: .95rem;
+}
+
+/* Botón primario: reutiliza .btn.btn-primary del contacto */
+.login-form .btn.btn-primary {
+  width: 100%;
+}
+
+/* Nota auxiliar */
+.form-note {
+  font-size: .9rem;
+  color: #667085;
+  margin-top: .6rem;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .login-form input {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   PANEL — Registros de contacto (usa la misma paleta de contacto)
+   ========================================================================== */
+.panel-wrap {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px
+}
+
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px
+}
+
+.panel-title {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0
+}
+
+.badge {
+  display: inline-block;
+  background: #eef3fb;
+  color: #1f2a44;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  border: 1px solid #d8e1f0
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e7e7e7;
+  text-decoration: none;
+  color: var(--primary-color);
+  background: #fff
+}
+
+/* Tabla principal */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden
+}
+
+.table th,
+.table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f2f6;
+  font-size: .95rem
+}
+
+.table th {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: left
+}
+
+.table tr:last-child td {
+  border-bottom: none
+}
+
+.table tr:hover td {
+  background: #fafbff
+}
+
+.actions a {
+  margin-right: 8px
+}
+
+.file-link {
+  color: var(--secondary-color);
+  text-decoration: none
+}
+
+.file-link:hover {
+  text-decoration: underline
+}
+
+/* Estado vacío */
+.empty {
+  background: #fff;
+  border: 1px dashed #cfd6e4;
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  color: #667085;
+  box-shadow: var(--box-shadow)
+}
+
+.empty .ico {
+  font-size: 42px;
+  color: var(--secondary-color);
+  margin-bottom: 8px
+}
+
+/* Visor */
+.viewer-title {
+  margin: 20px 0 8px 0;
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 1.3rem
+}
+
+.table-scroll {
+  overflow: auto;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--box-shadow)
+}
+
+/* Filtros/acciones superiores */
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.search input {
+  padding: 10px 12px;
+  border: 1px solid #cfd6e4;
+  border-radius: 8px;
+  background: #fafcff
+}
+
+/* Botones coherentes con contacto */
+.btn.cta {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none
+}
+
+.btn.cta:hover {
+  background-color: #e65c00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .15)
+}
+
+.btn.intranet {
+  background: transparent;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color)
+}
+
+.btn.intranet:hover {
+  background: var(--secondary-color);
+  color: #fff
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .panel-title {
+    font-size: 1.6rem
+  }
+
+  .panel-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px
+  }
+
+  .actions a {
+    margin-right: 6px
+  }
+}
+
+/* ===== Estilos del panel (coherentes con contacto.css) ===== */
+.panel-wrap {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px
+}
+
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px
+}
+
+.panel-title {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0
+}
+
+.badge {
+  display: inline-block;
+  background: #eef3fb;
+  color: #1f2a44;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  border: 1px solid #d8e1f0
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e7e7e7;
+  text-decoration: none;
+  color: var(--primary-color);
+  background: #fff
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden
+}
+
+.table th,
+.table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f2f6;
+  font-size: .95rem
+}
+
+.table th {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: left
+}
+
+.table tr:last-child td {
+  border-bottom: none
+}
+
+.table tr:hover td {
+  background: #fafbff
+}
+
+.actions a {
+  margin-right: 8px
+}
+
+.empty {
+  background: #fff;
+  border: 1px dashed #cfd6e4;
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  color: #667085;
+  box-shadow: var(--box-shadow)
+}
+
+.empty .ico {
+  font-size: 42px;
+  color: var(--secondary-color);
+  margin-bottom: 8px
+}
+
+.file-link {
+  color: var(--secondary-color);
+  text-decoration: none
+}
+
+.file-link:hover {
+  text-decoration: underline
+}
+
+.viewer-title {
+  margin: 20px 0 8px 0;
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 1.3rem
+}
+
+.table-scroll {
+  overflow: auto;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--box-shadow)
+}
+
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center
+}
+
+.search input {
+  padding: 10px 12px;
+  border: 1px solid #cfd6e4;
+  border-radius: 8px;
+  background: #fafcff
+}
