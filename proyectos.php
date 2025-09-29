@@ -39,7 +39,7 @@
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
-        <a class="btn intranet" href="#">Intranet ›</a>
+        <a class="btn intranet" href="/logs/intranet.php">Intranet ›</a>
     </div>
 </header>
 <main class="projects-page">

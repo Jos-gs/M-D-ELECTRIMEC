@@ -34,7 +34,7 @@
         <li><a href="contacto.php">Contacto</a></li>
       </ul>
     </nav>
-    <a class="btn intranet" href="#">Intranet ›</a>
+    <a class="btn intranet" href="/logs/intranet.php">Intranet ›</a>
   </div>
 </header>
 
@@ -106,7 +106,7 @@
 
           <div class="form-row">
             <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" pattern="^[0-9 +()-]{6,}$" required>
+            <input id="telefono" name="telefono" type="tel" pattern="^[\d ()-]{6,}$" required>
           </div>
 
           <div class="form-row">
