@@ -1,3 +1,19 @@
+<?php
+// Script para contar visitas
+$contador_file = 'contador_visitas.txt';
+
+// Lee el conteo actual, si el archivo no existe, empieza en 0
+$conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_file) : 0;
+
+// Incrementa el conteo en 1
+$conteo_actual++;
+
+// Guarda el nuevo conteo en el archivo
+file_put_contents($contador_file, $conteo_actual);
+?>
+<!DOCTYPE html>
+<html lang="es"></html>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -29,12 +45,7 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="nosotros.php">Nosotros</a></li>
-                <li class="has-submenu">
-                    <a href="#">Negocios </a>
-                    
-                </li>
                 <li><a href="proyectos.php">Proyectos</a></li>
-                <li><a href="#">Noticias</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
@@ -45,7 +56,6 @@
 <main>
 
     <section class="hero-carousel">
-        
         <div class="carousel-slides">
             <div class="slide active" style="background-image: url('images/hero-bg1.png');"></div>
             <div class="slide" style="background-image: url('images/hero-bg2.png');"></div>
@@ -55,62 +65,29 @@
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <h1>Especialistas en fabricación y montaje de equipos y plantas industriales</h1>
-            <p>Somos una empresa metalmecánica especializada en la fabricación y montaje de equipos para los sectores cementero, minero, energético e industrial.</p>
+            <h1>MANTENIMIENTO Y DISEÑO ELÉCTRICO - MECÁNICO</h1>
+            <p>Gracias a la experiencia obtenida en diversos proyectos, contamos con una estructura sólida y flexible que nos permite adaptarnos al mercado y brindar un servicio de calidad.</p>
             <a href="#contacto" class="btn cta">Contáctanos</a>
         </div>
 
-        <button class="carousel-nav prev" aria-label="Anterior">&#10094;</button>
-        <button class="carousel-nav next" aria-label="Siguiente">&#10095;</button>
+        <button class="carousel-nav prev" aria-label="Anterior">❮</button>
+        <button class="carousel-nav next" aria-label="Siguiente">❯</button>
 
         <div class="carousel-dots">
             <span class="dot active" data-slide="0"></span>
             <span class="dot" data-slide="1"></span>
             <span class="dot" data-slide="2"></span>
         </div>
-
     </section>
+
     <section id="nosotros" class="brochure">
         <div class="container">
             <div class="brochure-image">
-                 <img src="images/img2.png" alt="Equipo de CORMEI trabajando">
+                 <img src="images/img2.png" alt="Equipo de M&D ELECTRIMEC trabajando">
             </div>
             <div class="brochure-content">
                 <h2>Conoce un poco más de M&D ELECTRICMEC S.A.C.</h2>
-                <p>En M&D ELECTRICMEC S.A.C., ubicada en Lima-Perú, somos una empresa comprometida con la excelencia en soluciones de diseño y mantenimiento eléctrico y mecánico, asi como servicios generales según las necesidades del cliente.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="negocios" class="services">
-        <div class="container">
-            <h2 class="section-title">Ofrecemos…</h2>
-            <p class="section-subtitle">Un servicio de calidad y compromiso, respaldado por la flexibilidad que nos permite adaptarnos a las diversas necesidades de nuestros clientes.</p>
-            <div class="cards">
-                <article class="card">
-                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
-                    <h3>Ingeniería</h3>
-                    <p>Diseño y desarrollo de soluciones técnicas avanzadas, garantizando eficiencia y precisión.</p>
-                    <!-- <a href="#" class="card-link">Conoce más →</a> -->
-                </article>
-                <article class="card">
-                    <div class="card-icon"><i class="fas fa-industry"></i></div>
-                    <h3>Fabricación</h3>
-                    <p>Producción de alta calidad adaptada a las necesidades industriales, con capacidad para grandes proyectos.</p>
-                    <!-- <a href="#" class="card-link">Conoce más →</a> -->
-                </article>
-                <article class="card">
-                    <div class="card-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Montaje</h3>
-                    <p>Instalación especializada de equipos y plantas industriales para máxima eficiencia y durabilidad.</p>
-                    <!-- <a href="#" class="card-link">Conoce más →</a> -->
-                </article>
-                <article class="card">
-                    <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
-                    <h3>Construcción</h3>
-                    <p>Ejecución de proyectos en concreto armado, cumpliendo con los más altos estándares de calidad.</p>
-                    <!-- <a href="#" class="card-link">Conoce más →</a> -->
-                </article>
+                <p>El Gerente General (CEO) de M&D ELECTRIMEC S.A.C., Daniel Mas Ventura, es el responsable de liderar la dirección estratégica de la organización. Con una visión clara y un enfoque orientado a resultados, guía la toma de decisiones clave para el crecimiento de la empresa y garantiza que cada proyecto cumpla con los más altos estándares de calidad.</p>
             </div>
         </div>
     </section>
@@ -120,27 +97,18 @@
             <div class="stats-grid">
                 <article class="stat-item">
                     <div class="stat-number">
-                        <span data-target="600">0</span><span class="stat-unit">TON</span>
+                        <span class="stat-unit">+</span>
+                        <span data-target="380">0</span>
                     </div>
-                    <p>Capacidad de fabricación<br>mensual</p>
+                    <p>Servicios<br>realizados</p>
                 </article>
                 <article class="stat-item">
                     <div class="stat-number">
-                        <span data-target="30">0</span><span class="stat-unit">MM</span>
+                        <span class="stat-unit">+</span>
+                        <span data-target="15000">0</span>
+                        <span class="stat-unit">HH</span>
                     </div>
                     <p>Horas hombre<br>trabajadas</p>
-                </article>
-                <article class="stat-item">
-                    <div class="stat-number">
-                        <span data-target="3">0</span><span class="stat-unit">Plantas</span>
-                    </div>
-                    <p>De fabricación<br>a nivel nacional</p>
-                </article>
-                <article class="stat-item">
-                    <div class="stat-number">
-                        <span data-target="60">0</span><span class="stat-unit">mil m²</span>
-                    </div>
-                    <p>De modernas<br>instalaciones</p>
                 </article>
             </div>
         </div>
@@ -149,19 +117,19 @@
     <section id="contacto" class="contact">
         <div class="container contact-layout">
             <div class="contact-info">
-                <h2>Tenemos la solución para tu proyecto</h2>
+                <h2>Cotiza con nosotros...</h2>
                 <p class="subtitle">¡Contáctanos y nos comunicaremos a la brevedad!</p>
                 <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> <strong>Av. Los Faisanes 284, Urb. La Campiña. Chorrillos, Lima.</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</strong></p>
                     <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                     <p><i class="fas fa-phone"></i> +51 978 270 153</p>
                 </div>
-                 <div class="map-placeholder">
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.583593060243!2d-77.0182226851865!3d-12.14150999140411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b804b9062a9d%3A0x88f5a2a2e4e69852!2sAv.%20los%20Faisanes%20284%2C%20Lima%2015054!5e0!3m2!1ses-419!2spe!4v1664057885885!5m2!1ses-419!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                 </div>
+                <div class="map-placeholder">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.969188265089!2d-76.95315568518599!3d-12.1830089913837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9f7a7b7c7c7%3A0x7f4b3b3b3b3b3b3b!2sVilla%20Trinidad%2C%20Villa%20El%20Salvador%2015842!5e0!3m2!1ses-419!2spe!4v1664323456789!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
             <div class="contact-form">
-                <form action="#" method="post">
+                <form action="procesar_cotizacion.php" method="post">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombres<span>*</span></label>
@@ -171,6 +139,10 @@
                             <label for="apellido">Apellidos<span>*</span></label>
                             <input type="text" id="apellido" name="apellido" placeholder="Escribe tus apellidos" required />
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa<span>*</span></label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" required />
                     </div>
                     <div class="form-group">
                         <label for="email">Email<span>*</span></label>
@@ -221,7 +193,7 @@
             <div class="footer-logo">
                 <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
                 <span>M&D ELECTRIMEC</span>
-                <p>Especialistas en mantenimiento e instalación de equipos eléctricos y mecánicos.</p>
+                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -234,7 +206,7 @@
             </div>
             <div class="footer-contact">
                 <h4>Contacto</h4>
-                 <p><i class="fas fa-map-marker-alt"></i> Dirección de la Empresa, Ciudad</p>
+                 <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>
             </div>
@@ -245,7 +217,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>© <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

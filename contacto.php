@@ -17,25 +17,30 @@
 <body>
 
 <header class="site-header">
-  <div class="container">
-    <div class="logo">
-      <a href="index.php">
-        <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-        <span>M&D ELECTRIMEC</span>
-      </a>
+    <div class="container">
+        <div class="logo">
+            <a href="index.php">
+                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
+                <span>M&D ELECTRIMEC</span>
+            </a>
+        </div>
+        <nav class="main-nav">
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="nosotros.php">Nosotros</a></li>
+                <!-- <li class="has-submenu">
+                    <a href="#">Negocios </a>
+                    
+                </li> -->
+                <li><a href="proyectos.php">Proyectos</a></li>
+                <!-- <li><a href="#">Noticias</a></li> -->
+                <li><a href="contacto.php">Contacto</a></li>
+            </ul>
+        </nav>
+        <a class="btn intranet" href="/logs/intranet.php">Intranet ›</a>
     </div>
-    <nav class="main-nav">
-      <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
-      <ul class="nav-menu">
-        <li><a href="nosotros.php">Nosotros</a></li>
-        <li class="has-submenu"><a href="#">Negocios</a></li>
-        <li><a href="proyectos.php">Proyectos</a></li>
-        <li><a href="#">Noticias</a></li>
-        <li><a href="contacto.php">Contacto</a></li>
-      </ul>
-    </nav>
-    <a class="btn intranet" href="/logs/intranet.php">Intranet ›</a>
-  </div>
 </header>
 
 <main>
@@ -64,14 +69,15 @@
             <i class="fas fa-map-marker-alt"></i>
             <div>
               <h3>Dirección</h3>
-              <p>Dirección de la Empresa, Ciudad</p>
+              <p>Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
             </div>
           </div>
           <div class="contact-card">
             <i class="fas fa-clock"></i>
             <div>
               <h3>Horario</h3>
-              <p>Lun–Vie: 8:00–18:00</p>
+              <p>Lun–Vie: 7:00am–5:00pm</p>
+              <p>Sab: 7:00am–1:00pm</p>
             </div>
           </div>
         </div>
@@ -83,21 +89,18 @@
 
         <div class="contact-map">
           <iframe title="Ubicación M&D ELECTRIMEC" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Piura&output=embed"></iframe>
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d689.3080255536615!2d-76.95721004096804!3d-12.226935661501757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzM2LjgiUyA3NsKwNTcnMjUuOCJX!5e0!3m2!1ses!2spe!4v1759470337726!5m2!1ses!2spe"></iframe>
         </div>
       </div>
 
       <div class="contact-form">
         <form id="contact-form" action="enviar_contacto.php" method="post" class="form" autocomplete="off" novalidate>
+          <h4 class="contact-title">Trabaja con nosotros</h4>
           <div class="form-row">
             <label for="nombre">Nombre y apellido</label>
             <input id="nombre" name="nombre" type="text" required>
           </div>
 
-          <div class="form-row">
-            <label for="empresa">Empresa (opcional)</label>
-            <input id="empresa" name="empresa" type="text">
-          </div>
 
           <div class="form-row">
             <label for="correo">Correo</label>
@@ -136,38 +139,38 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-        <span>M&D ELECTRIMEC</span>
-        <p>Especialistas en mantenimiento e instalación de equipos eléctricos y mecánicos.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="nosotros.php">Nosotros</a></li>
-          <li><a href="#">Servicios</a></li>
-          <li><a href="#">Proyectos</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contacto</h4>
-        <p><i class="fas fa-map-marker-alt"></i> Dirección de la Empresa, Ciudad</p>
-        <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
-        <p><i class="fas fa-phone"></i> +51 978 270 153</p>
-      </div>
-      <div class="footer-social">
-        <h4>Síguenos</h4>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-      </div>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
+                <span>M&D ELECTRIMEC</span>
+                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="nosotros.php">Nosotros</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Proyectos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                 <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
+                <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +51 978 270 153</p>
+            </div>
+            <div class="footer-social">
+                 <h4>Síguenos</h4>
+                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+        </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
-    </div>
-  </div>
 </footer>
 
 <!-- JS -->
