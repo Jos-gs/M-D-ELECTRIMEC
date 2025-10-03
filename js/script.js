@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- LÓGICA DEL MENÚ MÓVIL (HAMBURGUESA) ---
+    // --- MOBILE MENU (HAMBURGER) LOGIC ---
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- LÓGICA PARA SUBMENÚS EN MÓVIL ---
+    // --- MOBILE SUB-MENU LOGIC ---
     const submenus = document.querySelectorAll('.has-submenu > a');
     submenus.forEach(submenu => {
         submenu.addEventListener('click', function(e) {
@@ -24,15 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- LÓGICA PARA ANIMACIONES AL HACER SCROLL ---
+    // --- ON-SCROLL FADE-IN ANIMATION LOGIC ---
     const elementsToAnimate = document.querySelectorAll('.about-text, .about-image, .team-card, .subsection-title, .mvv-card, .stat-item');
     
     if (elementsToAnimate.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
+        const fadeInObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    fadeInObserver.unobserve(entry.target);
                 }
             });
         }, {
@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         elementsToAnimate.forEach(element => {
             element.classList.add('fade-in');
-            observer.observe(element);
+            fadeInObserver.observe(element);
         });
     }
 
-    // --- LÓGICA PARA LA VENTANA EMERGENTE (MODAL) DE PROYECTOS ---
+    // --- PROJECTS PAGE MODAL (POP-UP) LOGIC ---
     const projectCards = document.querySelectorAll('.project-card');
     const modal = document.getElementById('project-modal');
     
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- LÓGICA PARA EL CARRUSEL DE IMÁGENES DEL INICIO ---
+    // --- HERO IMAGE CAROUSEL LOGIC ---
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prev = document.querySelector('.prev');
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         const startCarousel = () => {
-            slideInterval = setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+            slideInterval = setInterval(nextSlide, 5000); // Changes every 5 seconds
         };
 
         const resetInterval = () => {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startCarousel();
     }
     
-    // --- LÓGICA PARA LA ANIMACIÓN DE CONTEO EN ESTADÍSTICAS ---
+    // --- STATS COUNTER ANIMATION LOGIC ---
     const statsSection = document.querySelector('.stats-section');
 
     if (statsSection) {
@@ -157,9 +157,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
-                        counter.innerText = '0'; // Reiniciar a 0
+                        counter.innerText = '0'; // Reset to 0 before animating
                         let count = 0;
-                        const increment = target / 100;
+                        const increment = target / 100; // Animate in 100 steps
 
                         const updateCount = () => {
                             if (count < target) {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         updateCount();
                     });
                     
-                    observer.unobserve(statsSection); // Animar solo una vez
+                    observer.unobserve(statsSection); // Animate only once
                 }
             });
         };

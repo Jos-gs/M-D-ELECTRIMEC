@@ -1,32 +1,21 @@
 <?php
 // Script para contar visitas
 $contador_file = 'contador_visitas.txt';
-
-// Lee el conteo actual, si el archivo no existe, empieza en 0
 $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_file) : 0;
-
-// Incrementa el conteo en 1
 $conteo_actual++;
-
-// Guarda el nuevo conteo en el archivo
 file_put_contents($contador_file, $conteo_actual);
 ?>
-<!DOCTYPE html>
-<html lang="es"></html>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M&D ELECTRIMEC S.A.C</title>
-    
-
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo.ico" ">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -54,25 +43,20 @@ file_put_contents($contador_file, $conteo_actual);
 </header>
 
 <main>
-
     <section class="hero-carousel">
         <div class="carousel-slides">
             <div class="slide active" style="background-image: url('images/hero-bg1.png');"></div>
             <div class="slide" style="background-image: url('images/hero-bg2.png');"></div>
             <div class="slide" style="background-image: url('images/hero-bg3.png');"></div>
         </div>
-        
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
             <h1>MANTENIMIENTO Y DISEÑO ELÉCTRICO - MECÁNICO</h1>
             <p>Gracias a la experiencia obtenida en diversos proyectos, contamos con una estructura sólida y flexible que nos permite adaptarnos al mercado y brindar un servicio de calidad.</p>
             <a href="#contacto" class="btn cta">Contáctanos</a>
         </div>
-
         <button class="carousel-nav prev" aria-label="Anterior">❮</button>
         <button class="carousel-nav next" aria-label="Siguiente">❯</button>
-
         <div class="carousel-dots">
             <span class="dot active" data-slide="0"></span>
             <span class="dot" data-slide="1"></span>
@@ -125,7 +109,7 @@ file_put_contents($contador_file, $conteo_actual);
                     <p><i class="fas fa-phone"></i> +51 978 270 153</p>
                 </div>
                 <div class="map-placeholder">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.969188265089!2d-76.95315568518599!3d-12.1830089913837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9f7a7b7c7c7%3A0x7f4b3b3b3b3b3b3b!2sVilla%20Trinidad%2C%20Villa%20El%20Salvador%2015842!5e0!3m2!1ses-419!2spe!4v1664323456789!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d689.3080255536615!2d-76.95721004096804!3d-12.226935661501757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzM2LjgiUyA3NsKwNTcnMjUuOCJX!5e0!3m2!1ses!2spe!4v1759470337726!5m2!1ses!2spe" ></iframe>
                 </div>
             </div>
             <div class="contact-form">
@@ -163,24 +147,12 @@ file_put_contents($contador_file, $conteo_actual);
             <h2>Hemos realizado…</h2>
             <p>Diversos trabajos en empresas de prestigio como: HAUG S.A, CORMEI S.A.C, INVERCEM S.A., GreenCorp, Grupo Klaus, Dijisa Sac. <br>Así como en Centros médicos, residenciales, entre otros.</p>
             <div class="client-logos">
-                <div class="client-logo">
-                    <img src="images/e1.png" alt="Logo de Empresa Cliente 1">
-                </div>
-                <div class="client-logo">
-                    <img src="images/e2.png" alt="Logo de Empresa Cliente 2">
-                </div>
-                <div class="client-logo">
-                    <img src="images/e3.png" alt="Logo de Empresa Cliente 3">
-                </div>
-                <div class="client-logo">
-                    <img src="images/e4.png" alt="Logo de Empresa Cliente 4">
-                </div>
-                <div class="client-logo">
-                    <img src="images/e5.png" alt="Logo de Empresa Cliente 5">
-                </div>
-                <div class="client-logo">
-                    <img src="images/e6.png" alt="Logo de Empresa Cliente 6">
-                </div>
+                <div class="client-logo"><img src="images/e1.png" alt="Logo de Empresa Cliente 1"></div>
+                <div class="client-logo"><img src="images/e2.png" alt="Logo de Empresa Cliente 2"></div>
+                <div class="client-logo"><img src="images/e3.png" alt="Logo de Empresa Cliente 3"></div>
+                <div class="client-logo"><img src="images/e4.png" alt="Logo de Empresa Cliente 4"></div>
+                <div class="client-logo"><img src="images/e5.png" alt="Logo de Empresa Cliente 5"></div>
+                <div class="client-logo"><img src="images/e6.png" alt="Logo de Empresa Cliente 6"></div>
             </div>
         </div>
     </section>
