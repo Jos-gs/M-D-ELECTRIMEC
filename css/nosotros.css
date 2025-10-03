@@ -26,7 +26,7 @@
 .about-text .subtitle {
     font-size: 1.15rem;
     color: #555;
-    line-height: 1.8;
+    text-align: justify;
 }
 
 .about-image img {
