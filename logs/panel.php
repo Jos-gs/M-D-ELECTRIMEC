@@ -90,6 +90,8 @@ usort($rows_cotizaciones, function($a, $b) {
     return strcmp($b[0] ?? '', $a[0] ?? '');
 });
 
+$contador_file = __DIR__ . '/../contador_visitas.txt';
+$conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_file) : 0;
 ?>
 <!doctype html>
 <html lang="es">
@@ -152,6 +154,7 @@ usort($rows_cotizaciones, function($a, $b) {
         <div class="kpi"><div class="kpi-ico k2"><i class="fa-solid fa-calendar-day"></i></div><div class="kpi-body"><span class="kpi-label">Hoy</span><span class="kpi-num"><?= $hoyCnt ?></span></div></div>
         <div class="kpi"><div class="kpi-ico k3"><i class="fa-solid fa-calendar"></i></div><div class="kpi-body"><span class="kpi-label">Este mes</span><span class="kpi-num"><?= $mesCnt ?></span></div></div>
         <div class="kpi"><div class="kpi-ico k4"><i class="fa-solid fa-envelope"></i></div><div class="kpi-body"><span class="kpi-label">Correos únicos</span><span class="kpi-num"><?= $uniqCnt ?></span></div></div>
+        <div class="kpi"><div class="kpi-ico k5"><i class="fa-solid fa-eye"></i></div><div class="kpi-body"><span class="kpi-label">Visitas totales</span><span class="kpi-num"><?= number_format($conteo_actual) ?></span></div></div>
     </div>
     <div class="c-filter-date">
         <form method="get" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
