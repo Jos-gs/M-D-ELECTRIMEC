@@ -549,15 +549,31 @@ body {
 
     .brochure .container {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
     .contact-layout {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
     .footer-content {
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
+    }
+
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .prev {
+        left: 15px;
+    }
+
+    .next {
+        right: 15px;
     }
 }
 
@@ -567,11 +583,15 @@ body {
         line-height: 1.5;
     }
 
+    .container {
+        padding: 0 20px;
+    }
+
     section {
         padding: 3rem 0;
     }
 
-    /* Navegación Móvil */
+    /* Navegación Móvil Mejorada */
     .menu-toggle {
         display: block;
         background: none;
@@ -580,19 +600,26 @@ body {
         color: var(--primary-color);
         cursor: pointer;
         z-index: 1001;
+        padding: 8px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background-color: var(--light-grey);
     }
 
     .main-nav .nav-menu {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 82px;
-        /* Altura del header */
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: var(--white-color);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         border-top: 1px solid var(--light-grey);
+        z-index: 1000;
     }
 
     .main-nav .nav-menu.active {
@@ -600,9 +627,15 @@ body {
     }
 
     .main-nav a {
-        padding: 1.2rem;
+        padding: 1.2rem 1.5rem;
         text-align: center;
         border-bottom: 1px solid var(--light-grey);
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+        background-color: var(--light-grey);
     }
 
     .btn.intranet {
@@ -611,45 +644,117 @@ body {
 
     /* Ajustes de Layout */
     .hero-carousel {
-        height: 80vh;
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        padding: 0 15px;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
     }
 
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .carousel-dots {
+        bottom: 20px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+    }
+
+    /* Títulos Responsivos */
     .brochure h2,
     .contact-info h2,
     .clients h2,
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.3;
     }
 
     .brochure .container {
         text-align: center;
+        gap: 2rem;
     }
 
     .brochure-image {
-        max-width: 400px;
+        max-width: 100%;
         margin: 0 auto 2rem;
     }
 
+    .brochure-content {
+        text-align: center;
+    }
+
+    /* Estadísticas */
     .stats-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .stat-number {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
+    .stat-item {
+        padding: 1.5rem;
+    }
+
+    /* Formularios */
     .form-row {
         flex-direction: column;
         gap: 0;
     }
 
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Previene zoom en iOS */
+        padding: 14px 12px;
+    }
+
+    /* Clientes */
+    .client-logos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .client-logo img {
+        max-width: 120px;
+    }
+
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
 
     .footer-logo {
@@ -658,10 +763,160 @@ body {
 
     .footer-contact p {
         justify-content: center;
+        text-align: center;
     }
 
-    .footer-bottom {
-        flex-direction: column;
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+/* --- Estilos para Móviles Pequeños (hasta 480px) --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .brochure h2,
+    .contact-info h2,
+    .clients h2,
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .client-logos {
+        grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .client-logo img {
+        max-width: 100px;
+    }
+
+    .contact-form form {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 10px;
+    }
+}
+
+/* --- Mejoras de Accesibilidad y Touch --- */
+@media (max-width: 768px) {
+    /* Mejores targets de toque */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+
+    .carousel-nav {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .dot {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Mejores transiciones para móvil */
+    .project-card,
+    .team-card,
+    .mvv-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:active,
+    .team-card:active,
+    .mvv-card:active {
+        transform: scale(0.98);
+    }
+
+    /* Mejoras adicionales para móviles */
+    .logo img {
+        height: 45px;
+    }
+
+    .logo span {
+        font-size: 1.4rem;
+    }
+
+    /* Mejor espaciado en secciones */
+    .brochure,
+    .contact,
+    .clients {
+        padding: 4rem 0;
+    }
+
+    /* Optimización de imágenes */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Mejores márgenes para texto */
+    p {
+        margin-bottom: 1rem;
+    }
+
+    /* Mejores botones de navegación del carrusel */
+    .carousel-nav {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .carousel-nav:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* --- Optimizaciones para pantallas muy pequeñas --- */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .brochure h2,
+    .contact-info h2,
+    .clients h2,
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 8px;
+        font-size: 14px;
     }
 }

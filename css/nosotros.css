@@ -204,10 +204,165 @@
     .about-intro {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 3rem;
     }
     .about-image {
         order: -1;
         max-width: 500px;
         margin: 0 auto 3rem;
+    }
+    
+    .mvv-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .about-us-section {
+        padding: 4rem 0;
+    }
+    
+    .about-intro {
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    
+    .about-text .main-title {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .about-text .subtitle {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .about-image {
+        max-width: 100%;
+        margin: 0 auto 2rem;
+    }
+    
+    .subsection-title {
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .mvv-section {
+        margin: 4rem 0;
+    }
+    
+    .mvv-grid {
+        gap: 1.5rem;
+    }
+    
+    .mvv-card {
+        padding: 2rem;
+    }
+    
+    .mvv-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .mvv-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .team-card {
+        padding: 1.5rem;
+    }
+    
+    .team-photo img,
+    .team-icon {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+    
+    .team-icon {
+        font-size: 45px;
+    }
+    
+    .team-name {
+        font-size: 1.4rem;
+    }
+    
+    .team-role {
+        font-size: 0.9rem;
+    }
+    
+    .team-description {
+        font-size: 0.9rem;
+        min-height: auto;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .about-us-section {
+        padding: 3rem 0;
+    }
+    
+    .about-text .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .about-text .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .subsection-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .mvv-card {
+        padding: 1.5rem;
+    }
+    
+    .mvv-icon {
+        font-size: 2.5rem;
+    }
+    
+    .mvv-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .team-card {
+        padding: 1.2rem;
+    }
+    
+    .team-photo img,
+    .team-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .team-icon {
+        font-size: 35px;
+    }
+    
+    .team-name {
+        font-size: 1.2rem;
+    }
+    
+    .team-role {
+        font-size: 0.85rem;
+    }
+    
+    .team-description {
+        font-size: 0.85rem;
     }
 }
