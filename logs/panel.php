@@ -99,6 +99,8 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Clientes — Intranet</title>
+<link rel="icon" href="../images/logo.png" type="image/png">
+<link rel="shortcut icon" href="../images/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">

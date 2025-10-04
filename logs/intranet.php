@@ -8,6 +8,8 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Intranet — Acceso</title>
+<link rel="icon" href="../images/logo.png" type="image/png">
+<link rel="shortcut icon" href="../images/logo.png" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,7 +95,7 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
+                <img src="../images/logo.png" alt="M&D ELECTRIMEC Logo">
                 <span>M&D ELECTRIMEC</span>
                 <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
             </div>
