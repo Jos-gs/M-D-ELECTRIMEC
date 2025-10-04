@@ -144,6 +144,115 @@
 }
 
 /* ==========================================================================
+   RESPONSIVE DESIGN PARA INTRANET LOGIN
+   ========================================================================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .login-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .login-title {
+    font-size: 2rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .login-section {
+    padding: 4rem 0;
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .login-lead {
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .login-cards {
+    gap: 0.8rem;
+  }
+  
+  .login-card {
+    padding: 1rem;
+    grid-template-columns: 35px 1fr;
+    gap: 0.8rem;
+  }
+  
+  .login-card i {
+    font-size: 18px;
+  }
+  
+  .login-card h3 {
+    font-size: 0.9rem;
+  }
+  
+  .login-card p {
+    font-size: 0.9rem;
+  }
+  
+  .login-form-wrap .login-form {
+    padding: 1.5rem;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    font-size: 16px; /* Previene zoom en iOS */
+    padding: 12px;
+  }
+  
+  .login-form .btn.btn-primary {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .login-section {
+    padding: 3rem 0;
+  }
+  
+  .login-title {
+    font-size: 1.6rem;
+  }
+  
+  .login-card {
+    padding: 0.8rem;
+    grid-template-columns: 30px 1fr;
+    gap: 0.6rem;
+  }
+  
+  .login-card i {
+    font-size: 16px;
+  }
+  
+  .login-card h3 {
+    font-size: 0.85rem;
+  }
+  
+  .login-card p {
+    font-size: 0.85rem;
+  }
+  
+  .login-form-wrap .login-form {
+    padding: 1.2rem;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 10px;
+  }
+}
+
+/* ==========================================================================
    PANEL — Registros de contacto (usa la misma paleta de contacto)
    ========================================================================== */
 .panel-wrap {

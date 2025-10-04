@@ -6,7 +6,7 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Intranet — Acceso</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,9 +35,9 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
         <li><a href="../proyectos.php">Proyectos</a></li>
         <!-- <li><a href="#">Noticias</a></li> -->
         <li><a href="../contacto.php">Contacto</a></li>
+        <li><a class="btn intranet" href="intranet.php">Intranet ›</a></li>
       </ul>
     </nav>
-    <a class="btn intranet" href="intranet.php">Intranet ›</a>
   </div>
 </header>
 

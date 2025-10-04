@@ -38,9 +38,9 @@
                 <li><a href="proyectos.php">Proyectos</a></li>
                 <!-- <li><a href="#">Noticias</a></li> -->
                 <li><a href="contacto.php">Contacto</a></li>
+                <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
-        <a class="btn intranet" href="/logs/intranet.php">Intranet ›</a>
     </div>
 </header>
 <main>

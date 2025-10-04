@@ -96,7 +96,8 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Clientes — Intranet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -157,15 +158,15 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
         <div class="kpi"><div class="kpi-ico k5"><i class="fa-solid fa-eye"></i></div><div class="kpi-body"><span class="kpi-label">Visitas totales</span><span class="kpi-num"><?= number_format($conteo_actual) ?></span></div></div>
     </div>
     <div class="c-filter-date">
-        <form method="get" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <form method="get" class="filter-form">
             <label for="fdate">Filtrar por Fecha:</label>
-            <select name="fdate" id="fdate" onchange="this.form.submit()" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+            <select name="fdate" id="fdate" onchange="this.form.submit()">
                 <option value="">-- Todas las Fechas --</option>
                 <?php foreach($unique_dates as $date => $val): ?>
                     <option value="<?= htmlspecialchars($date) ?>" <?= $date === $fdate ? 'selected' : '' ?>><?= htmlspecialchars($date) ?> (<?= date('d/M', strtotime($date)) ?>)</option>
                 <?php endforeach; ?>
             </select>
-            <?php if ($fdate !== ''): ?><a href="panel.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>" class="btn-clean" style="padding: 5px 10px;">Limpiar Filtro</a><?php endif; ?>
+            <?php if ($fdate !== ''): ?><a href="panel.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>" class="btn-clean">Limpiar Filtro</a><?php endif; ?>
             <?php if ($q !== ''): ?><input type="hidden" name="q" value="<?= htmlspecialchars($q) ?>"><?php endif; ?>
         </form>
     </div>
