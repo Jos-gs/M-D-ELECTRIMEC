@@ -19,6 +19,12 @@ COPY . /var/www/html/
 # Da permisos de escritura a las carpetas donde se guardan logs y archivos generados
 RUN chown -R www-data:www-data /var/www/html/logs /var/www/html/docs || true
 
+# Crea los archivos necesarios si no existen y da permisos
+RUN touch /var/www/html/contador_visitas.txt \
+    && touch /var/www/html/cotizaciones.csv \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html
+
 # Expone el puerto 8000
 EXPOSE 8000
 
