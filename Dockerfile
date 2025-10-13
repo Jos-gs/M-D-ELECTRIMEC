@@ -38,3 +38,19 @@ ENV TZ=America/Lima
 RUN echo "error_reporting = E_ALL\n\
 display_errors = On\n\
 date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
+
+
+# Imagen base con Apache y PHP
+FROM php:8.2-apache
+
+# Copiar el contenido del proyecto al contenedor
+COPY . /var/www/html/
+
+# Dar permisos adecuados
+RUN chown -R www-data:www-data /var/www/html
+
+# Exponer el puerto HTTP
+EXPOSE 80
+
+# Iniciar Apache
+CMD ["apache2-foreground"]
