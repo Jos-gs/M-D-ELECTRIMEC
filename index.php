@@ -10,7 +10,7 @@ file_put_contents($contador_file, $conteo_actual);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>M&D ELECTRIMEC S.A.C</title>
+    <title>M&D ELECTRICMEC S.A.C</title>
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +25,8 @@ file_put_contents($contador_file, $conteo_actual);
     <div class="container">
         <div class="logo">
             <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
             </a>
         </div>
         <nav class="main-nav">
@@ -52,7 +52,8 @@ file_put_contents($contador_file, $conteo_actual);
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>MANTENIMIENTO Y DISEÑO ELÉCTRICO - MECÁNICO</h1>
+            <h1>M&D ELECTRICMEC</h1>
+            <h2>MANTENIMIENTO Y DISEÑO ELÉCTRICO - MECÁNICO</h2>
             <p>Gracias a la experiencia obtenida en diversos proyectos, contamos con una estructura sólida y flexible que nos permite adaptarnos al mercado y brindar un servicio de calidad.</p>
             <a href="#contacto" class="btn cta">Contáctanos</a>
         </div>
@@ -68,11 +69,11 @@ file_put_contents($contador_file, $conteo_actual);
     <section id="nosotros" class="brochure">
         <div class="container">
             <div class="brochure-image">
-                 <img src="images/img2.png" alt="Equipo de M&D ELECTRIMEC trabajando">
+                 <img src="images/img2.png" alt="Equipo de M&D ELECTRICMEC trabajando">
             </div>
             <div class="brochure-content">
                 <h2>Conoce un poco más de M&D ELECTRICMEC S.A.C.</h2>
-                <p>El Gerente General (CEO) de M&D ELECTRIMEC S.A.C., Daniel Mas Ventura, es el responsable de liderar la dirección estratégica de la organización. Con una visión clara y un enfoque orientado a resultados, guía la toma de decisiones clave para el crecimiento de la empresa y garantiza que cada proyecto cumpla con los más altos estándares de calidad.</p>
+                <p>El Gerente General (CEO) de M&D ELECTRICMEC S.A.C.,es el responsable de liderar la dirección estratégica de la organización. Con una visión clara y un enfoque orientado a resultados, guía la toma de decisiones clave para el crecimiento de la empresa y garantiza que cada proyecto cumpla con los más altos estándares de calidad.</p>
             </div>
         </div>
     </section>
@@ -82,16 +83,20 @@ file_put_contents($contador_file, $conteo_actual);
             <div class="stats-grid">
                 <article class="stat-item">
                     <div class="stat-number">
-                        <span class="stat-unit">+</span>
-                        <span data-target="380">0</span>
+                        <span class="stat-prefix">Más de</span>
+                        <div class="stat-value-wrapper">
+                            <span data-target="380">0</span>
+                        </div>
                     </div>
                     <p>Servicios<br>realizados</p>
                 </article>
                 <article class="stat-item">
                     <div class="stat-number">
-                        <span class="stat-unit">+</span>
-                        <span data-target="15000">0</span>
-                        <span class="stat-unit">HH</span>
+                        <span class="stat-prefix">Más de</span>
+                        <div class="stat-value-wrapper">
+                            <span data-target="15000">0</span>
+                            <span class="stat-unit">HH</span>
+                        </div>
                     </div>
                     <p>Horas hombre<br>trabajadas</p>
                 </article>
@@ -164,9 +169,9 @@ file_put_contents($contador_file, $conteo_actual);
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
-                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
+                <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -190,7 +195,7 @@ file_put_contents($contador_file, $conteo_actual);
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>© <?php echo date('Y'); ?> M&D ELECTRICMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

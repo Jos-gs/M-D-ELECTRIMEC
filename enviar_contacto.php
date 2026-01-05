@@ -81,7 +81,7 @@ if (!$USE_SMTP) {
 	// ------- mail() nativo -------
 	$headers 	= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-	$headers .= "From: M&D ELECTRIMEC <{$FROM}>\r\n";
+	$headers .= "From: M&D ELECTRICMEC <{$FROM}>\r\n";
 	$headers .= "Reply-To: {$correo}\r\n";
 	$mailOk = @mail($TO, '=?UTF-8?B?'.base64_encode($SUBJECT).'?=', $bodyTxt, $headers);
 }

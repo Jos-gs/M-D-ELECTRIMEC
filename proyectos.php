@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Proyectos - M&D ELECTRIMEC S.A.C</title>
+    <title>Proyectos - M&D ELECTRICMEC S.A.C</title>
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
 
@@ -23,8 +23,8 @@
     <div class="container">
         <div class="logo">
             <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
             </a>
         </div>
         <nav class="main-nav">
@@ -47,7 +47,7 @@
 </header>
 <main class="projects-page">
     <div class="container">
-        <h1 class="page-title">Nuestros Proyectos y Servicios</h1>
+        <h1 class="page-title">Conoce nuestros proyectos</h1>
         <p class="page-subtitle">Explora la variedad de soluciones que ofrecemos. Haz clic en cualquier servicio para ver más detalles.</p>
 
         <div class="projects-grid">
@@ -59,17 +59,6 @@
                 <img src="images/i1.png" alt="Alarmas Contra Incendios">
                 <div class="card-content">
                     <h3>Instalación , configuración y mantenimiento de alarmas contra incendios</h3>
-                    <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
-                </div>
-            </a>
-
-            <a href="#" class="project-card"
-               data-title="CONTAMOS CON PERSONAL CAPACITADO EN:"
-               data-image="images/i2-1.png"
-               data-description="<ul><li>Construcción de la estructura de soporte.</li><li>Instalación del mecanismo de elevación.</li><li>Instalación de portones.</li><li>Conexiones eléctricas y de control.</li></ul>">
-                <img src="images/i2-2.png" alt="Portones Levadizos">
-                <div class="card-content">
-                    <h3>Instalación y mantenimiento de portones levadizos</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -124,7 +113,7 @@
                data-description="<p>Para producción de cemento.</p><ul><li>Calibración de equipos.</li><li>Mantenimiento a motores y sensores.</li><li>Instalación y puesta en marcha.</li></ul>">
                 <img src="images/i7-2.png" alt="Balanzas Dosificadoras">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Balanzas Dosificadoras</h3>
+                    <h3>Mtto. Equipos Industriales: Balanzas Dosificadoras</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -135,7 +124,7 @@
                data-description="<ul><li>Cableado y conexión de equipos.</li><li>Mantenimientos preventivos y correctivos.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i8.png" alt="Puentes Grúas">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Puentes Grúas</h3>
+                    <h3>Mtto. Equipos Industriales: Puentes Grúas</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -146,7 +135,7 @@
                data-description="<ul><li>Cableado y conexión de equipos: Exhaustores, sensores, secuenciadores, etc.</li><li>Mantenimientos preventivos y correctivos.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i9.png" alt="Filtros de Mangas">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Filtros de Mangas</h3>
+                    <h3>Mtto. Equipos Industriales: Filtros de Mangas</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -157,7 +146,7 @@
                data-description="<ul><li>Diagnósticos de fallas.</li><li>Mantenimiento preventivo y correctivo de accesorios mecánicos y eléctricos.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i10.png" alt="Manlift Articulados">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Manlift Articulados</h3>
+                    <h3>Mtto. Equipos Industriales: Manlift Articulados</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -168,7 +157,7 @@
                data-description="<ul><li>Diagnósticos de fallas.</li><li>Mantenimiento preventivo y correctivo de accesorios eléctricos y mecánicos.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i11-2.png" alt="Grupos Electrógenos">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Grupos Electrógenos</h3>
+                    <h3>Mtto. Equipos Industriales: Grupos Electrógenos</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -179,7 +168,7 @@
                data-description="<ul><li>Cableado y conexión de sensores de: Temperatura, presión, caudalímetros, etc.</li><li>Mantenimientos preventivos y correctivos.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i12-2.png" alt="Control e Instrumentación">
                 <div class="card-content">
-                    <h3>Equipos Industriales: Control e Instrumentación</h3>
+                    <h3>Mtto. Equipos Industriales: Control e Instrumentación</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -191,6 +180,39 @@
                 <img src="images/i13-2.png" alt="Seguridad en Maquinaria">
                 <div class="card-content">
                     <h3>Seguridad en Maquinaria Industrial</h3>
+                    <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#" class="project-card"
+               data-title="Mtto. Correctivo y puesta en marcha de Sistema de Niquelado"
+               data-image="images/i14.png"
+               data-description="<ul><li>Recableado integral del sistema de instrumentación, conforme a planos y estándares aplicables.</li><li>Ejecución de pruebas de continuidad y aislamiento del cableado instalado.</li><li>Verificación y prueba de señales de los instrumentos, asegurando correcta transmisión y calibración básica.</li><li>Puesta en marcha del sistema, comprobando su correcto funcionamiento y operatividad.</li></ul>">
+                <img src="images/i14.png" alt="Sistema de Niquelado">
+                <div class="card-content">
+                    <h3>Mtto. Correctivo y puesta en marcha de Sistema de Niquelado</h3>
+                    <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#" class="project-card"
+               data-title="Mtto. Correctivo y puesta en marcha de Prensa de inducción"
+               data-image="images/i15.png"
+               data-description="<ul><li>Desmontaje del estator para reparación mecánica e inspección eléctrica.</li><li>Pruebas de resistencia de aislamiento.</li><li>Cambio de sensores, asegurando correcta instalación y calibración.</li><li>Puesta en marcha de prensa de inducción - pruebas en vacío y con carga.</li></ul>">
+                <img src="images/i15.png" alt="Prensa de inducción">
+                <div class="card-content">
+                    <h3>Mtto. Correctivo y puesta en marcha de Prensa de inducción</h3>
+                    <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#" class="project-card"
+               data-title="Mtto. Correctivo y prueba de funcionamiento de Máquina de alivio de tensiones"
+               data-image="images/i16.png"
+               data-description="<ul><li>Inspección del circuito electrónico de la máquina.</li><li>Evaluación y reparación de componentes electrónicos dañados.</li><li>Calibración de la máquina de alivio de tensiones.</li><li>Pruebas de funcionamiento y verificación operativa.</li></ul>">
+                <img src="images/i16.png" alt="Máquina de alivio de tensiones">
+                <div class="card-content">
+                    <h3>Mtto. Correctivo y prueba de funcionamiento de Máquina de alivio de tensiones</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -212,9 +234,9 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
-                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
+                <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -238,7 +260,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRICMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

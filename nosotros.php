@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Nosotros - M&D ELECTRIMEC S.A.C</title>
+    <title>Nosotros - M&D ELECTRICMEC S.A.C</title>
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
 
@@ -23,8 +23,8 @@
     <div class="container">
         <div class="logo">
             <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
             </a>
         </div>
         <nav class="main-nav">
@@ -50,11 +50,10 @@
         <div class="container">
             <div class="about-intro">
                 <div class="about-text">
-                    <h1 class="main-title">Mantenimiento, diseño e instalación de equipos <br>eléctricos-mecánicos.</h1>
-                    <p class="subtitle">En <strong>M&D ELECTRIMEC S.A.C</strong>, somos una empresa con trayectoria en el mantenimiento, diseño e instalación de equipos eléctricos y mecánicos. Nuestra estructura ágil nos permite adaptarnos y ofrecer un servicio eficiente y de máxima calidad.</p>
+                    <h3 class="subtitle">En <strong>M&D ELECTRICMEC S.A.C</strong>, somos una empresa con trayectoria en el mantenimiento, diseño e instalación de equipos eléctricos y mecánicos. Nuestra estructura ágil nos permite adaptarnos y ofrecer un servicio eficiente y de máxima calidad.</h3>
                 </div>
                 <div class="about-image">
-                    <img src="images/img1.png" alt="Equipo de M&D ELECTRIMEC trabajando">
+                    <img src="images/img1.png" alt="Equipo de M&D ELECTRICMEC trabajando">
                 </div>
             </div>
 
@@ -90,46 +89,30 @@
                     </div>
                 </div>
             </div>
-            <h2 class="subsection-title">Nuestro Equipo Directivo</h2>
+            <h2 class="subsection-title">Nuestros Valores</h2>
             <div class="team-grid">
                 <article class="team-card">
-                    <div class="team-photo">
-                        <img src="https://placehold.co/400x400/ff6600/FFFFFF?text=DMV" alt="Daniel Mas Ventura">
+                    <div class="team-icon">
+                        <i class="fas fa-cog"></i>
                     </div>
-                    <h3 class="team-name">Daniel Mas Ventura</h3>
-                    <p class="team-role">Gerente General</p>
-                    <p class="team-description">Líder con visión estratégica, responsable del crecimiento de la empresa y la supervisión de proyectos clave.</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
+                    <h3 class="team-name">Rigor técnico</h3>
+                    <p class="team-description">Ejecutamos cada servicio bajo criterios de ingeniería, normativa vigente y buenas prácticas del sector eléctrico y mecánico, asegurando trabajos confiables y técnicamente sustentados.</p>
                 </article>
-
-                <article class="team-card">
-                    <div class="team-photo">
-                        <img src="https://placehold.co/400x400/ff6600/FFFFFF?text=OMV" alt="Orlita Mas Ventura">
-                    </div>
-                    <h3 class="team-name">Orlita Mas Ventura</h3>
-                    <p class="team-role">Directora Financiera</p>
-                    <p class="team-description">Pieza fundamental en la gestión financiera y contable, garantizando la solidez y sustentabilidad de la empresa.</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </article>
-
-                
 
                 <article class="team-card">
                     <div class="team-icon">
-                        <i class="fas fa-users-cog"></i>
+                        <i class="fas fa-tools"></i>
                     </div>
-                    <h3 class="team-name">Equipo de Operaciones</h3>
-                    <p class="team-role">Ejecución de Proyectos</p>
-                    <p class="team-description">El corazón de nuestros proyectos. Responsables de la ejecución, supervisión y calidad en cada tarea.</p>
-                    <div class="team-social">
-                        <a href="#" aria-label="Proyectos"><i class="fas fa-briefcase"></i></a>
+                    <h3 class="team-name">Mantenimiento con enfoque preventivo</h3>
+                    <p class="team-description">Promovemos soluciones que priorizan la continuidad operativa, reduciendo fallas, paradas no programadas y riesgos mediante una adecuada planificación y ejecución del mantenimiento.</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
+                    <h3 class="team-name">Seguridad operativa</h3>
+                    <p class="team-description">La seguridad es parte integral de nuestro trabajo. Aplicamos procedimientos seguros para proteger a las personas, los equipos y las instalaciones en cada intervención.</p>
                 </article>
             </div>
         </div>
@@ -139,9 +122,9 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
-                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
+                <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -165,7 +148,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRICMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

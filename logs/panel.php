@@ -23,7 +23,7 @@ rsort($files_clientes, SORT_NATURAL);
 $rows_clientes = [];
 foreach ($files_clientes as $f) {
     if (($h = fopen($f, 'r')) !== false) {
-        while (($d = fgetcsv($h, 0, ';')) !== false) { 
+        while (($d = fgetcsv($h, 0, ';', '"', '\\')) !== false) { 
             if (count($d) >= 8) $rows_clientes[] = $d; 
         }
         fclose($h);
@@ -34,9 +34,12 @@ foreach ($files_clientes as $f) {
 $q = trim($_GET['q'] ?? '');
 $filtered_clientes = $rows_clientes; 
 if ($q !== '') {
-    $qnorm = mb_strtolower($q, 'UTF-8');
+    // Usar mb_strtolower si está disponible, sino usar strtolower
+    $qnorm = function_exists('mb_strtolower') ? mb_strtolower($q, 'UTF-8') : strtolower($q);
     $filtered_clientes = array_values(array_filter($filtered_clientes, function($r) use ($qnorm){
-        return strpos(mb_strtolower(implode(' ', $r),'UTF-8'), $qnorm) !== false;
+        $text = implode(' ', $r);
+        $textLower = function_exists('mb_strtolower') ? mb_strtolower($text, 'UTF-8') : strtolower($text);
+        return strpos($textLower, $qnorm) !== false;
     }));
 }
 $fdate = trim($_GET['fdate'] ?? '');
@@ -76,7 +79,7 @@ $cotizaciones_file = __DIR__ . '/../cotizaciones.csv'; // Ruta al archivo de cot
 $rows_cotizaciones = [];
 if (file_exists($cotizaciones_file) && ($handle = fopen($cotizaciones_file, 'r')) !== false) {
     $isHeader = true; // Para saltar la primera fila (cabecera)
-    while (($data = fgetcsv($handle)) !== false) {
+    while (($data = fgetcsv($handle, 0, ',', '"', '\\')) !== false) {
         if ($isHeader) {
             $isHeader = false;
             continue;
@@ -118,19 +121,73 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
 
 /* NUEVO: Contenedor para la tabla de cotizaciones */
 .table-container {
-    margin-top: 4rem; /* Espacio para separar de la tabla de arriba */
+    margin-top: 3rem;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #e7e7e7;
+    padding: 0;
+    overflow: hidden;
+}
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 2px solid #f4f4f4;
+    background: linear-gradient(to right, #f8f9fa, #fff);
 }
 .table-header h2 {
     font-family: var(--font-heading, 'Montserrat');
     color: var(--primary-color, #003366);
     font-size: 1.8rem;
-    margin: 0 0 1.5rem 0;
-    border-bottom: 2px solid #f4f4f4;
-    padding-bottom: 1rem;
+    margin: 0 0 0.25rem 0;
+    font-weight: 700;
+}
+.table-subtitle {
+    color: #667085;
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: var(--font-body, 'Open Sans');
+}
+.table-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.stat-badge {
+    background: #eef3fb;
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #d8e1f0;
+}
+.stat-badge strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+.table-container .c-tablewrap {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+.table-header-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to right, #f8f9fa, #fff);
+    border-bottom: 1px solid #e7e7e7;
+}
+.table-header-inline h3 {
+    font-family: var(--font-heading, 'Montserrat');
+    color: var(--primary-color, #003366);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
 }
 </style>
 </head>
@@ -173,6 +230,10 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
         </form>
     </div>
     <div class="c-tablewrap">
+        <div class="table-header-inline">
+            <h3>Registros de Contacto</h3>
+            <span class="stat-badge">Mostrando: <strong><?= count($filtered_clientes) ?></strong> de <?= number_format($total) ?></span>
+        </div>
         <table class="c-table">
             <thead>
                 <tr>
@@ -191,7 +252,7 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
                         <td><span class="chip"><?= htmlspecialchars($r[2]??'',ENT_QUOTES,'UTF-8') ?></span></td>
                         <td><a class="mail" href="mailto:<?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?></a></td>
                         <td><?= htmlspecialchars($r[4]??'',ENT_QUOTES,'UTF-8') ?></td>
-                        <td><?= htmlspecialchars($r[5]??'',ENT_QUOTES,'UTF-8') ?></td>
+                        <td class="msg"><?= htmlspecialchars($r[5]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td class="msg" title="<?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td><?= htmlspecialchars($r[7]??'',ENT_QUOTES,'UTF-8') ?></td>
                     </tr>
@@ -203,7 +264,13 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
     
     <div class="table-container">
         <div class="table-header">
-            <h2>Cotiza con nosotros</h2>
+            <div>
+                <h2>Cotiza con nosotros</h2>
+                <p class="table-subtitle">Registros de solicitudes de cotización</p>
+            </div>
+            <div class="table-stats">
+                <span class="stat-badge">Total: <strong><?= count($rows_cotizaciones) ?></strong></span>
+            </div>
         </div>
         <div class="c-tablewrap">
             <table class="c-table">
@@ -238,7 +305,7 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
         <div class="c-empty" style="margin-top: 16px;"><div class="ico">📭</div><p>No se encontraron archivos CSV.</p></div>
     <?php endif; ?>
     
-    <footer class="c-foot">Intranet M&D ELECTRIMEC</footer>
+    <footer class="c-foot">Intranet M&D ELECTRICMEC</footer>
 </div>
 
 <div id="filesModal" class="modal">

@@ -25,8 +25,8 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
   <div class="container">
     <div class="logo">
       <a href="../index.php">
-        <img src="../images/logo.png" alt="M&D ELECTRIMEC Logo">
-        <span>M&D ELECTRIMEC</span>
+        <img src="../images/logo.png" alt="M&D ELECTRICMEC Logo">
+        <span>M&D ELECTRICMEC</span>
       </a>
     </div>
     <nav class="main-nav">
@@ -95,9 +95,9 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="../images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
-                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+                <img src="../images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
+                <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -121,7 +121,7 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRICMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

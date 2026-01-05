@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>M&D ELECTRIMEC S.A.C</title>
+  <title>M&D ELECTRICMEC S.A.C</title>
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="shortcut icon" href="images/logo.png" type="image/png">
 
@@ -22,8 +22,8 @@
     <div class="container">
         <div class="logo">
             <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
             </a>
         </div>
         <nav class="main-nav">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="contact-map">
-          <iframe title="Ubicación M&D ELECTRIMEC" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          <iframe title="Ubicación M&D ELECTRICMEC" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d689.3080255536615!2d-76.95721004096804!3d-12.226935661501757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzM2LjgiUyA3NsKwNTcnMjUuOCJX!5e0!3m2!1ses!2spe!4v1759470337726!5m2!1ses!2spe"></iframe>
         </div>
       </div>
@@ -144,9 +144,9 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRIMEC Logo">
-                <span>M&D ELECTRIMEC</span>
-                <p>Mantenimiento, diseño e instalacion de equipos eléctrico - mecánico.</p>
+                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <span>M&D ELECTRICMEC</span>
+                <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
@@ -170,7 +170,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRIMEC S.A.C. Todos los derechos reservados.</p>
+            <p>&copy; <?php echo date('Y'); ?> M&D ELECTRICMEC S.A.C. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

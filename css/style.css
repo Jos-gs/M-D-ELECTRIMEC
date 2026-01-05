@@ -96,7 +96,12 @@ body {
 /* ==========================================================================
    Header y Navegación
    ========================================================================== */
-.site-header {
+.brochure-content{
+    justify-content: center;
+    text-justify: auto;
+}
+
+   .site-header {
     background-color: var(--white-color);
     box-shadow: var(--box-shadow);
     position: sticky;
@@ -333,6 +338,10 @@ body {
     text-align: left;
 }
 
+.brochure-content p {
+    text-align: justify;
+}
+
 .brochure h2 {
     font-family: var(--font-heading);
     color: var(--primary-color);
@@ -362,14 +371,35 @@ body {
     font-size: 4rem;
     font-weight: 700;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.stat-prefix {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.stat-value-wrapper {
+    display: flex;
     align-items: baseline;
+    justify-content: center;
+    line-height: 1;
+}
+
+.stat-number span[data-target] {
+    line-height: 1;
 }
 
 .stat-unit {
     font-size: 1.5rem;
     color: var(--secondary-color);
-    margin: 0 8px;
+    margin-left: 8px;
+    display: inline-block;
 }
 
 .contact {
@@ -403,11 +433,18 @@ body {
 }
 
 .map-placeholder {
-    height: 300px;
+    height: 450px;
     border-radius: var(--border-radius);
     overflow: hidden;
     margin-top: 2rem;
     box-shadow: var(--box-shadow);
+}
+.map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--border-radius);
+    display: block;
 }
 
 .contact-form form {
