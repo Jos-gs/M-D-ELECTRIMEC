@@ -38,7 +38,7 @@
                 </li> -->
                 <li><a href="proyectos.php">Proyectos</a></li>
                 <!-- <li><a href="#">Noticias</a></li> -->
-                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -49,7 +49,7 @@
   <section class="contact-section">
     <div class="container contact-grid">
       <div class="contact-info">
-        <h1 class="contact-title">Contacto</h1>
+        <h1 class="contact-title">Trabaja con Nosotros</h1>
         <p class="contact-lead">Tenemos la solución para tu proyecto. Completa el formulario y te responderemos.</p>
 
         <div class="contact-cards">
@@ -97,7 +97,7 @@
 
       <div class="contact-form">
         <form id="contact-form" action="enviar_contacto.php" method="post" class="form" autocomplete="off" novalidate>
-          <h4 class="contact-title">Trabaja con nosotros</h4>
+          <h4 class="contact-title">Contáctanos</h4>
           <div class="form-row">
             <label for="nombre">Nombre y apellido</label>
             <input id="nombre" name="nombre" type="text" required>
@@ -154,11 +154,11 @@
                     <li><a href="nosotros.php">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>Contacto</h4>
+                <h4>Trabaja con Nosotros</h4>
                  <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>

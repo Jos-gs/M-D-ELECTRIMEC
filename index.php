@@ -36,7 +36,7 @@ file_put_contents($contador_file, $conteo_actual);
             <ul class="nav-menu">
                 <li><a href="nosotros.php">Nosotros</a></li>
                 <li><a href="proyectos.php">Proyectos</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -179,11 +179,11 @@ file_put_contents($contador_file, $conteo_actual);
                     <li><a href="nosotros.php">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>Contacto</h4>
+                <h4>Trabaja con Nosotros</h4>
                  <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>

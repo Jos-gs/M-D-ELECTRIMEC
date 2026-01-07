@@ -39,7 +39,7 @@
                 </li> -->
                 <li><a href="proyectos.php">Proyectos</a></li>
                 <!-- <li><a href="#">Noticias</a></li> -->
-                <li><a href="contacto.php">Contacto</a></li>
+                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -77,10 +77,10 @@
             <a href="#" class="project-card"
                data-title="Diseño y Mantenimiento de Pozos a Tierra (PAT)"
                data-image="images/i4.png"
-               data-description="<p>Según NTP 370.053.</p><ul><li>Suministros de alta calidad para asegurar la correcta protección.</li><li>Construcción total de PAT.</li><li>Medición de resistencia a tierra con Telurómetro.</li><li>Inspección y firma por ingeniero colegiado y habilitado.</li></ul>">
+               data-description="<ul><li>Suministros de alta calidad para asegurar la correcta protección.</li><li>Construcción total de PAT.</li><li>Medición de resistencia a tierra con Telurómetro.</li><li>Inspección y firma por ingeniero colegiado y habilitado.</li></ul>">
                 <img src="images/i4.png" alt="Pozos a Tierra">
                 <div class="card-content">
-                    <h3>Diseño, instalación  y mantenimiento de pozos a tierra (PAT) Según ntp 370.053</h3>
+                    <h3>Diseño, instalación  y mantenimiento de pozos a tierra (PAT)</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -174,12 +174,12 @@
             </a>
             
             <a href="#" class="project-card"
-               data-title="Implementación de Sistema de Seguridad en Maquinaria Industrial"
+               data-title="Implementación de sistemas de seguridad en maquinaria industrial"
                data-image="images/i13-1.png"
                data-description="<ul><li>Diseño e implementación de circuito de control para sistema de seguridad en Prensas industriales.</li><li>Pruebas de funcionamiento para Puesta en Marcha.</li></ul>">
                 <img src="images/i13-2.png" alt="Seguridad en Maquinaria">
                 <div class="card-content">
-                    <h3>Seguridad en Maquinaria Industrial</h3>
+                    <h3>Implementación de sistemas de seguridad en maquinaria industrial</h3>
                     <span class="card-cta">Ver más <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -244,11 +244,11 @@
                     <li><a href="nosotros.php">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>Contacto</h4>
+                <h4>Trabaja con Nosotros</h4>
                  <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>
