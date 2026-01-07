@@ -48,8 +48,50 @@
 <main>
   <section class="contact-section">
     <div class="container contact-grid">
+      <div class="contact-form">
+        <form id="contact-form" action="enviar_contacto.php" method="post" class="form" autocomplete="off" novalidate>
+          <h4 class="contact-title">Trabaja con Nosotros</h4>
+          <div class="form-row">
+            <label for="nombre">Nombre y apellido</label>
+            <input id="nombre" name="nombre" type="text" required>
+          </div>
+
+
+          <div class="form-row">
+            <label for="correo">Correo</label>
+            <input id="correo" name="correo" type="email" required>
+          </div>
+
+          <div class="form-row">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" pattern="^[\d ()-]{6,}$" required>
+          </div>
+
+          <div class="form-row">
+            <label for="asunto">Asunto</label>
+            <input id="asunto" name="asunto" type="text" required>
+          </div>
+
+          <div class="form-row">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+          </div>
+
+          <!-- Honeypot anti-bots -->
+          <input type="text" name="website" class="hp-field" tabindex="-1" aria-hidden="true">
+
+          <div class="form-row form-consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <label for="consent">Autorizo el uso de mis datos para contactarme. <a href="#" target="_blank" rel="noopener">Política de privacidad</a></label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          <p class="form-note">Respuesta estimada el mismo día hábil.</p>
+        </form>
+      </div>
+
       <div class="contact-info">
-        <h1 class="contact-title">Trabaja con Nosotros</h1>
+        <h1 class="contact-title">Contáctanos</h1>
         <p class="contact-lead">Tenemos la solución para tu proyecto. Completa el formulario y te responderemos.</p>
 
         <div class="contact-cards">
@@ -93,48 +135,6 @@
           <iframe title="Ubicación M&D ELECTRICMEC" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d689.3080255536615!2d-76.95721004096804!3d-12.226935661501757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzM2LjgiUyA3NsKwNTcnMjUuOCJX!5e0!3m2!1ses!2spe!4v1759470337726!5m2!1ses!2spe"></iframe>
         </div>
-      </div>
-
-      <div class="contact-form">
-        <form id="contact-form" action="enviar_contacto.php" method="post" class="form" autocomplete="off" novalidate>
-          <h4 class="contact-title">Contáctanos</h4>
-          <div class="form-row">
-            <label for="nombre">Nombre y apellido</label>
-            <input id="nombre" name="nombre" type="text" required>
-          </div>
-
-
-          <div class="form-row">
-            <label for="correo">Correo</label>
-            <input id="correo" name="correo" type="email" required>
-          </div>
-
-          <div class="form-row">
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" pattern="^[\d ()-]{6,}$" required>
-          </div>
-
-          <div class="form-row">
-            <label for="asunto">Asunto</label>
-            <input id="asunto" name="asunto" type="text" required>
-          </div>
-
-          <div class="form-row">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
-          </div>
-
-          <!-- Honeypot anti-bots -->
-          <input type="text" name="website" class="hp-field" tabindex="-1" aria-hidden="true">
-
-          <div class="form-row form-consent">
-            <input id="consent" name="consent" type="checkbox" required>
-            <label for="consent">Autorizo el uso de mis datos para contactarme. <a href="#" target="_blank" rel="noopener">Política de privacidad</a></label>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-          <p class="form-note">Respuesta estimada el mismo día hábil.</p>
-        </form>
       </div>
     </div>
   </section>
