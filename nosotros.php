@@ -75,18 +75,6 @@
                         <p>Ser la empresa líder y referente en el sector electromecánico a nivel nacional, reconocida por nuestra innovación, confiabilidad y por construir relaciones a largo plazo con nuestros clientes, contribuyendo al desarrollo industrial del país.</p>
                     </div>
 
-                    <div class="mvv-card">
-                        <div class="mvv-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3>Nuestros Valores</h3>
-                        <ul>
-                            <li><strong>Integridad:</strong> Actuamos con honestidad y transparencia.</li>
-                            <li><strong>Calidad:</strong> Buscamos la excelencia en cada proyecto.</li>
-                            <li><strong>Compromiso:</strong> Cumplimos con nuestros clientes y equipo.</li>
-                            <li><strong>Seguridad:</strong> Priorizamos el bienestar en todo momento.</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <h2 class="subsection-title">Nuestros Valores</h2>
