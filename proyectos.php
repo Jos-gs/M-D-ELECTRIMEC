@@ -249,7 +249,6 @@
             </div>
             <div class="footer-contact">
                 <h4>Trabaja con Nosotros</h4>
-                 <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>
             </div>
@@ -265,6 +264,11 @@
     </div>
 </footer>
 <script src="js/script.js"></script>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/51978270153" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>

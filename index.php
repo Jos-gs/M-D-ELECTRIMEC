@@ -73,7 +73,7 @@ file_put_contents($contador_file, $conteo_actual);
             </div>
             <div class="brochure-content">
                 <h2>Conoce un poco más de M&D ELECTRICMEC S.A.C.</h2>
-                <p>El Gerente General (CEO) de M&D ELECTRICMEC S.A.C.,es el responsable de liderar la dirección estratégica de la organización. Con una visión clara y un enfoque orientado a resultados, guía la toma de decisiones clave para el crecimiento de la empresa y garantiza que cada proyecto cumpla con los más altos estándares de calidad.</p>
+                <p>El equipo de M&D ELECTRICMEC S.A.C.,es el responsable de liderar la dirección estratégica de la organización. Con una visión clara y un enfoque orientado a resultados, guía la toma de decisiones clave para el crecimiento de la empresa y garantiza que cada proyecto cumpla con los más altos estándares de calidad.</p>
             </div>
         </div>
     </section>
@@ -110,12 +110,8 @@ file_put_contents($contador_file, $conteo_actual);
                 <h2>Cotiza con nosotros...</h2>
                 <p class="subtitle">¡Contáctanos y nos comunicaremos a la brevedad!</p>
                 <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> <strong>Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</strong></p>
                     <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                     <p><i class="fas fa-phone"></i> +51 978 270 153</p>
-                </div>
-                <div class="map-placeholder">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d689.3080255536615!2d-76.95721004096804!3d-12.226935661501757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzM2LjgiUyA3NsKwNTcnMjUuOCJX!5e0!3m2!1ses!2spe!4v1759470337726!5m2!1ses!2spe" ></iframe>
                 </div>
             </div>
             <div class="contact-form">
@@ -184,7 +180,6 @@ file_put_contents($contador_file, $conteo_actual);
             </div>
             <div class="footer-contact">
                 <h4>Trabaja con Nosotros</h4>
-                 <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
                 <p><i class="fas fa-phone"></i> +51 978 270 153</p>
             </div>
@@ -201,6 +196,11 @@ file_put_contents($contador_file, $conteo_actual);
 </footer>
 
 <script src="js/script.js"></script>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/51978270153" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
