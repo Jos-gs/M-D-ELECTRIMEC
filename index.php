@@ -85,7 +85,7 @@ file_put_contents($contador_file, $conteo_actual);
                     <div class="stat-number">
                         <span class="stat-prefix">Más de</span>
                         <div class="stat-value-wrapper">
-                            <span data-target="380">0</span>
+                            <span data-target="280">0</span>
                         </div>
                     </div>
                     <p>Servicios<br>realizados</p>
