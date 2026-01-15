@@ -250,7 +250,7 @@
             <div class="footer-contact">
                 <h4>Trabaja con Nosotros</h4>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +51 978 270 153</p>
+                <p><i class="fas fa-phone"></i> +51 928 612 796</p>
             </div>
             <div class="footer-social">
                  <h4>Síguenos</h4>
@@ -266,7 +266,7 @@
 <script src="js/script.js"></script>
 
 <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/51978270153" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
+<a href="https://wa.me/51928612796" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 

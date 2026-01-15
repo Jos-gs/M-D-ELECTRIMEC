@@ -112,7 +112,7 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
                 <h4>Contacto</h4>
                  <p><i class="fas fa-map-marker-alt"></i> Cal. 4 Mza. B Lote. 10 Dpto. 2 Int. a Asc. Villa trinidad - Villa el Salvador.</p>
                 <p><i class="fas fa-envelope"></i> myd.electricmec@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +51 978 270 153</p>
+                <p><i class="fas fa-phone"></i> +51 928 612 796</p>
             </div>
             <div class="footer-social">
                  <h4>Síguenos</h4>
