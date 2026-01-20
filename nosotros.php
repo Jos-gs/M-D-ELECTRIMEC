@@ -64,7 +64,7 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3>Nuestra Misión</h3>
-                        <p>Brindar soluciones integrales y de alta calidad en mantenimiento e instalación de equipos, garantizando la seguridad, eficiencia y satisfacción total de nuestros clientes a través de un equipo comprometido y altamente capacitado.</p>
+                        <p>Brindar soluciones integrales y de alta calidad en mantenimiento e instalación de equipos, garantizando la seguridad, eficiencia y satisfacción total de nuestros clientes a través de un equipo comprometido.</p>
                     </div>
 
                     <div class="mvv-card">
