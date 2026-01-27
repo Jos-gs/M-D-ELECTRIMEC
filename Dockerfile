@@ -10,12 +10,9 @@ RUN a2enmod rewrite
 # Configura ServerName para evitar el warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Asegura que solo un MPM esté activo (desactiva otros MPMs si existen)
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true
-RUN a2enmod mpm_prefork
-
-# Cambia el puerto de Apache a 8000 si tu plataforma lo requiere
-RUN sed -i 's/80/8000/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
+# Asegura que solo un MPM esté activo - elimina todos los MPMs y luego activa solo prefork
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true && \
+    a2enmod mpm_prefork
 
 # Copia todo el contexto del proyecto al directorio raíz de Apache
 COPY . /var/www/html/
@@ -29,7 +26,20 @@ RUN touch /var/www/html/contador_visitas.txt \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html
 
-# Expone el puerto 8000
+# Crea un script de inicio que configura el puerto dinámicamente desde la variable PORT
+RUN echo '#!/bin/bash' > /usr/local/bin/start-apache.sh && \
+    echo '# Obtiene el puerto de la variable de entorno PORT (Railway lo proporciona)' >> /usr/local/bin/start-apache.sh && \
+    echo 'PORT=${PORT:-8000}' >> /usr/local/bin/start-apache.sh && \
+    echo '' >> /usr/local/bin/start-apache.sh && \
+    echo '# Configura Apache para escuchar en el puerto especificado' >> /usr/local/bin/start-apache.sh && \
+    echo 'sed -i "s/Listen 80/Listen ${PORT}/" /etc/apache2/ports.conf' >> /usr/local/bin/start-apache.sh && \
+    echo 'sed -i "s/:80>/:${PORT}>/" /etc/apache2/sites-available/000-default.conf' >> /usr/local/bin/start-apache.sh && \
+    echo '' >> /usr/local/bin/start-apache.sh && \
+    echo '# Inicia Apache' >> /usr/local/bin/start-apache.sh && \
+    echo 'exec apache2-foreground' >> /usr/local/bin/start-apache.sh && \
+    chmod +x /usr/local/bin/start-apache.sh
+
+# Expone el puerto (Railway usará la variable PORT)
 EXPOSE 8000
 
 # Opcional: configura el directorio de trabajo
@@ -43,5 +53,5 @@ RUN echo "error_reporting = E_ALL\n\
 display_errors = On\n\
 date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
 
-# Iniciar Apache
-CMD ["apache2-foreground"]
+# Inicia Apache usando el script que configura el puerto dinámicamente
+CMD ["/usr/local/bin/start-apache.sh"]
