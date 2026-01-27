@@ -10,6 +10,10 @@ RUN a2enmod rewrite
 # Configura ServerName para evitar el warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Asegura que solo un MPM esté activo (desactiva otros MPMs si existen)
+RUN a2dismod mpm_event mpm_worker 2>/dev/null || true
+RUN a2enmod mpm_prefork
+
 # Cambia el puerto de Apache a 8000 si tu plataforma lo requiere
 RUN sed -i 's/80/8000/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 
@@ -38,19 +42,6 @@ ENV TZ=America/Lima
 RUN echo "error_reporting = E_ALL\n\
 display_errors = On\n\
 date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
-
-
-# Imagen base con Apache y PHP
-FROM php:8.2-apache
-
-# Copiar el contenido del proyecto al contenedor
-COPY . /var/www/html/
-
-# Dar permisos adecuados
-RUN chown -R www-data:www-data /var/www/html
-
-# Exponer el puerto HTTP
-EXPOSE 80
 
 # Iniciar Apache
 CMD ["apache2-foreground"]
