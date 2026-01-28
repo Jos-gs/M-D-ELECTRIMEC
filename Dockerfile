@@ -10,9 +10,22 @@ RUN a2enmod rewrite
 # Configura ServerName para evitar el warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Asegura que solo un MPM esté activo - elimina todos los MPMs y luego activa solo prefork
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true && \
-    a2enmod mpm_prefork
+# Asegura que solo un MPM esté activo - elimina todos y crea enlaces manualmente solo para prefork
+RUN a2dismod mpm_event mpm_worker mpm_prefork 2>/dev/null || true && \
+    rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true && \
+    rm -f /etc/apache2/conf-enabled/*mpm*.conf 2>/dev/null || true && \
+    # Crea enlaces simbólicos manualmente solo para mpm_prefork
+    ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf && \
+    ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load && \
+    # Verifica que solo prefork esté habilitado
+    echo "MPM modules enabled:" && \
+    ls -la /etc/apache2/mods-enabled/ | grep mpm || echo "No MPM modules found" && \
+    MPM_COUNT=$(ls -1 /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null | wc -l) && \
+    echo "Total MPM modules: $MPM_COUNT" && \
+    if [ "$MPM_COUNT" -ne 1 ]; then \
+        echo "ERROR: Expected 1 MPM, found $MPM_COUNT"; \
+        exit 1; \
+    fi
 
 # Copia todo el contexto del proyecto al directorio raíz de Apache
 COPY . /var/www/html/
@@ -28,6 +41,17 @@ RUN touch /var/www/html/contador_visitas.txt \
 
 # Crea un script de inicio que configura el puerto dinámicamente desde la variable PORT
 RUN echo '#!/bin/bash' > /usr/local/bin/start-apache.sh && \
+    echo 'set -e' >> /usr/local/bin/start-apache.sh && \
+    echo '' >> /usr/local/bin/start-apache.sh && \
+    echo '# Verifica que solo un MPM esté habilitado' >> /usr/local/bin/start-apache.sh && \
+    echo 'MPM_COUNT=$(ls -1 /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null | wc -l)' >> /usr/local/bin/start-apache.sh && \
+    echo 'if [ "$MPM_COUNT" -gt 1 ]; then' >> /usr/local/bin/start-apache.sh && \
+    echo '  echo "ERROR: Multiple MPMs detected. Disabling all and enabling only prefork..."' >> /usr/local/bin/start-apache.sh && \
+    echo '  a2dismod mpm_event mpm_worker 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
+    echo '  rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
+    echo '  a2enmod mpm_prefork' >> /usr/local/bin/start-apache.sh && \
+    echo 'fi' >> /usr/local/bin/start-apache.sh && \
+    echo '' >> /usr/local/bin/start-apache.sh && \
     echo '# Obtiene el puerto de la variable de entorno PORT (Railway lo proporciona)' >> /usr/local/bin/start-apache.sh && \
     echo 'PORT=${PORT:-8000}' >> /usr/local/bin/start-apache.sh && \
     echo '' >> /usr/local/bin/start-apache.sh && \
