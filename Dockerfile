@@ -79,3 +79,6 @@ date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
 
 # Inicia Apache usando el script que configura el puerto dinámicamente
 CMD ["/usr/local/bin/start-apache.sh"]
+
+RUN a2enmod rewrite
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
