@@ -10,6 +10,9 @@ RUN a2enmod rewrite
 # Configura ServerName para evitar el warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Configura DirectoryIndex para que index.php sea el archivo por defecto
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
+
 # Asegura que solo un MPM esté activo - elimina todos y crea enlaces manualmente solo para prefork
 RUN a2dismod mpm_event mpm_worker mpm_prefork 2>/dev/null || true && \
     rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true && \
@@ -77,8 +80,8 @@ RUN echo "error_reporting = E_ALL\n\
 display_errors = On\n\
 date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
 
+# Configura AllowOverride antes de copiar archivos
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
 # Inicia Apache usando el script que configura el puerto dinámicamente
 CMD ["/usr/local/bin/start-apache.sh"]
-
-RUN a2enmod rewrite
-RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
