@@ -14,18 +14,19 @@ RewriteCond %{REQUEST_URI} ^/var/www/html [NC,OR]
 RewriteCond %{REQUEST_URI} ^/var/www [NC]
 RewriteRule ^(.*)$ - [F,L]
 
-# Redirigir URLs sin extensión a archivos PHP si existen
+# Asegurar que las rutas relativas funcionen correctamente
+RewriteBase /
+
+# Redirigir URLs sin extensión a archivos PHP si existen (antes de otras reglas)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/var/www/html
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*)$ $1.php [L]
 
 # Redirigir index a index.php si se accede sin extensión
 RewriteCond %{THE_REQUEST} /index[\s?] [NC]
 RewriteRule ^index\.php$ / [R=301,L]
-
-# Asegurar que las rutas relativas funcionen correctamente
-RewriteBase /
 
 # Forzar HTTPS (opcional, descomentar si tienes SSL)
 # RewriteCond %{HTTPS} off

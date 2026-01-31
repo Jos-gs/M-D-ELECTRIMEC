@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <base href="/">
     <title>Proyectos - M&D ELECTRICMEC S.A.C</title>
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
