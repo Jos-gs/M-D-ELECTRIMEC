@@ -1,4 +1,0 @@
-Options -Indexes
-<FilesMatch "\.(csv)$">
-  Require all denied
-</FilesMatch>
