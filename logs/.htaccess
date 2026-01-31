@@ -1,15 +1,27 @@
 Options -Indexes
 RewriteEngine On
 
+# ======================
+# 🔒 PROTEGER ARCHIVOS SENSIBLES
+# ======================
 <FilesMatch "\.(csv|env|ini|log|conf|sql)$">
   Require all denied
 </FilesMatch>
 
+# Bloquear acceso directo a carpetas internas
 RewriteRule ^logs/ - [F,L]
 RewriteRule ^docs/ - [F,L]
 
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^/.]+)$ $1.php [L]
+# ======================
+# ✨ URLs SIN .php (solo si el archivo existe)
+# ======================
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^(.+)$ $1.php [L]
 
+# ======================
+# 🚫 REDIRIGIR .php A URL LIMPIA
+# ======================
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.php [NC]
 RewriteRule ^ %1 [R=301,L]
