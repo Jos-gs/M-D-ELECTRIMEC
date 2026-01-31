@@ -83,5 +83,9 @@ date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
 # Configura AllowOverride antes de copiar archivos
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
+# Configura Apache para no exponer información del servidor en errores
+RUN echo "ServerTokens Prod" >> /etc/apache2/apache2.conf && \
+    echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+
 # Inicia Apache usando el script que configura el puerto dinámicamente
 CMD ["/usr/local/bin/start-apache.sh"]

@@ -1,6 +1,0 @@
-Options -Indexes
-RewriteEngine On
-
-<FilesMatch "\.(csv)$">
-  Require all denied
-</FilesMatch>
