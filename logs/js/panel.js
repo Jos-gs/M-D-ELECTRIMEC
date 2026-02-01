@@ -30,6 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar gráficos del dashboard si existen
     if (typeof Chart !== 'undefined') {
         setTimeout(initDashboardCharts, 100);
+    } else {
+        // Si Chart.js no está cargado, intentar de nuevo después de un momento
+        setTimeout(function() {
+            if (typeof Chart !== 'undefined') {
+                initDashboardCharts();
+            } else {
+                console.warn('Chart.js no está disponible. Los gráficos no se mostrarán.');
+            }
+        }, 500);
     }
 });
 
@@ -153,6 +162,8 @@ function initDashboardCharts() {
         console.warn('Chart.js no está disponible');
         return;
     }
+    
+    console.log('Inicializando gráficos del dashboard...');
 
     // Gráfico de registros por día
     const ctxDias = document.getElementById('chartRegistrosDia');
