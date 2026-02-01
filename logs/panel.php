@@ -95,6 +95,76 @@ usort($rows_cotizaciones, function($a, $b) {
 
 $contador_file = __DIR__ . '/../contador_visitas.txt';
 $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_file) : 0;
+
+/* ==========================================================================
+   ESTADÍSTICAS PARA EL DASHBOARD
+   ========================================================================== */
+
+// Registros por día (últimos 30 días)
+$registros_por_dia = [];
+$fecha_limite = date('Y-m-d', strtotime('-30 days'));
+for ($i = 0; $i < 30; $i++) {
+    $fecha = date('Y-m-d', strtotime("-$i days"));
+    $registros_por_dia[$fecha] = 0;
+}
+foreach ($rows_clientes as $r) {
+    $fecha = substr($r[0] ?? '', 0, 10);
+    if ($fecha >= $fecha_limite && isset($registros_por_dia[$fecha])) {
+        $registros_por_dia[$fecha]++;
+    }
+}
+$registros_por_dia = array_reverse($registros_por_dia);
+
+// Registros por hora del día
+$registros_por_hora = array_fill(0, 24, 0);
+foreach ($rows_clientes as $r) {
+    if (!empty($r[0])) {
+        $hora = (int)substr($r[0], 11, 2);
+        if ($hora >= 0 && $hora < 24) {
+            $registros_por_hora[$hora]++;
+        }
+    }
+}
+
+// Top empresas (más contactos)
+$empresas_count = [];
+foreach ($rows_clientes as $r) {
+    $empresa = trim($r[2] ?? '');
+    if (!empty($empresa)) {
+        $empresas_count[$empresa] = ($empresas_count[$empresa] ?? 0) + 1;
+    }
+}
+arsort($empresas_count);
+$top_empresas = array_slice($empresas_count, 0, 10, true);
+
+// Registros por mes (últimos 12 meses)
+$registros_por_mes = [];
+for ($i = 0; $i < 12; $i++) {
+    $mes = date('Y-m', strtotime("-$i months"));
+    $registros_por_mes[$mes] = 0;
+}
+foreach ($rows_clientes as $r) {
+    $fecha = substr($r[0] ?? '', 0, 10);
+    $mes = substr($fecha, 0, 7);
+    if (isset($registros_por_mes[$mes])) {
+        $registros_por_mes[$mes]++;
+    }
+}
+$registros_por_mes = array_reverse($registros_por_mes);
+
+// Estadísticas de cotizaciones
+$cotizaciones_hoy = 0;
+$cotizaciones_mes = 0;
+$hoy_cot = date('Y-m-d');
+$mes_cot = date('Y-m');
+foreach ($rows_cotizaciones as $cot) {
+    $fecha_cot = substr($cot[0] ?? '', 0, 10);
+    if ($fecha_cot === $hoy_cot) $cotizaciones_hoy++;
+    if (substr($fecha_cot, 0, 7) === $mes_cot) $cotizaciones_mes++;
+}
+
+// Tasa de conversión (cotizaciones / contactos)
+$tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) : 0;
 ?>
 <!doctype html>
 <html lang="es">
@@ -110,87 +180,7 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/logs/css/panel.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-/* Estilos para el modal y la nueva tabla */
-.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-.modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 400px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-.close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
-.close:hover, .close:focus { color: #000; text-decoration: none; cursor: pointer; }
-.modal-content h2 { color: var(--primary-color, #003366); font-family: var(--font-heading, 'Montserrat'); margin-top: 0; }
-.file-list a { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; text-decoration: none; color: #003366; transition: color 0.2s; }
-.file-list a:hover { color: #FF6600; }
-
-/* NUEVO: Contenedor para la tabla de cotizaciones */
-.table-container {
-    margin-top: 3rem;
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: var(--box-shadow);
-    border: 1px solid #e7e7e7;
-    padding: 0;
-    overflow: hidden;
-}
-.table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1.5rem 1.5rem 1rem 1.5rem;
-    border-bottom: 2px solid #f4f4f4;
-    background: linear-gradient(to right, #f8f9fa, #fff);
-}
-.table-header h2 {
-    font-family: var(--font-heading, 'Montserrat');
-    color: var(--primary-color, #003366);
-    font-size: 1.8rem;
-    margin: 0 0 0.25rem 0;
-    font-weight: 700;
-}
-.table-subtitle {
-    color: #667085;
-    font-size: 0.9rem;
-    margin: 0;
-    font-family: var(--font-body, 'Open Sans');
-}
-.table-stats {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.stat-badge {
-    background: #eef3fb;
-    color: var(--primary-color);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid #d8e1f0;
-}
-.stat-badge strong {
-    color: var(--secondary-color);
-    font-weight: 700;
-}
-.table-container .c-tablewrap {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0;
-}
-.table-header-inline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(to right, #f8f9fa, #fff);
-    border-bottom: 1px solid #e7e7e7;
-}
-.table-header-inline h3 {
-    font-family: var(--font-heading, 'Montserrat');
-    color: var(--primary-color, #003366);
-    font-size: 1.1rem;
-    margin: 0;
-    font-weight: 600;
-}
-</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <div class="c-wrap container">
@@ -217,6 +207,89 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
         <div class="kpi"><div class="kpi-ico k4"><i class="fa-solid fa-envelope"></i></div><div class="kpi-body"><span class="kpi-label">Correos únicos</span><span class="kpi-num"><?= $uniqCnt ?></span></div></div>
         <div class="kpi"><div class="kpi-ico k5"><i class="fa-solid fa-eye"></i></div><div class="kpi-body"><span class="kpi-label">Visitas totales</span><span class="kpi-num"><?= number_format($conteo_actual) ?></span></div></div>
     </div>
+
+    <!-- Dashboard de Análisis -->
+    <div class="dashboard-section">
+        <div class="dashboard-header">
+            <h2><i class="fa-solid fa-chart-line"></i> Análisis de Datos</h2>
+            <p>Visualización y estadísticas de los registros de contacto y cotizaciones</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Gráfico de Registros por Día (últimos 30 días) -->
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-chart-line"></i> Registros por Día (30 días)</h3>
+                <div class="chart-container">
+                    <canvas id="chartRegistrosDia" data-chart='<?= json_encode($registros_por_dia, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>'></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico de Registros por Hora -->
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-clock"></i> Registros por Hora del Día</h3>
+                <div class="chart-container">
+                    <canvas id="chartRegistrosHora" data-chart='<?= json_encode($registros_por_hora, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>'></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico de Registros por Mes -->
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-calendar-alt"></i> Registros por Mes (12 meses)</h3>
+                <div class="chart-container chart-container-large">
+                    <canvas id="chartRegistrosMes" data-chart='<?= json_encode($registros_por_mes, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>'></canvas>
+                </div>
+            </div>
+
+            <!-- Top Empresas -->
+            <div class="dashboard-card">
+                <h3><i class="fa-solid fa-building"></i> Top 10 Empresas</h3>
+                <?php if (empty($top_empresas)): ?>
+                    <p style="color: #888; text-align: center; padding: 20px;">No hay datos de empresas disponibles.</p>
+                <?php else: ?>
+                    <ul class="top-empresas-list">
+                        <?php foreach($top_empresas as $empresa => $count): ?>
+                            <li>
+                                <span class="empresa-nombre"><?= htmlspecialchars($empresa, ENT_QUOTES, 'UTF-8') ?></span>
+                                <span class="empresa-count"><?= $count ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <canvas id="chartTopEmpresas" data-chart='<?= json_encode($top_empresas, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>' style="display: none;"></canvas>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Comparación de Estadísticas -->
+        <div class="dashboard-card" style="margin-top: 2rem;">
+            <h3><i class="fa-solid fa-balance-scale"></i> Comparación de Métricas</h3>
+            <div class="stats-comparison">
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= number_format($total) ?></div>
+                    <div class="stat-label">Total Contactos</div>
+                </div>
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= count($rows_cotizaciones) ?></div>
+                    <div class="stat-label">Total Cotizaciones</div>
+                </div>
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= $mesCnt ?></div>
+                    <div class="stat-label">Contactos Este Mes</div>
+                </div>
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= $cotizaciones_mes ?></div>
+                    <div class="stat-label">Cotizaciones Este Mes</div>
+                </div>
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= $tasa_conversion ?>%</div>
+                    <div class="stat-label">Tasa de Conversión</div>
+                </div>
+                <div class="stat-comparison-item">
+                    <div class="stat-value"><?= number_format($conteo_actual) ?></div>
+                    <div class="stat-label">Visitas Totales</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="c-filter-date">
         <form method="get" class="filter-form">
             <label for="fdate">Filtrar por Fecha:</label>
@@ -239,23 +312,31 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
             <thead>
                 <tr>
                     <th>Fecha</th><th>Nombre</th><th>Empresa</th><th>Correo</th>
-                    <th>Teléfono</th><th>Asunto</th><th>Mensaje</th><th>IP</th>
+                    <th>Teléfono</th><th>Asunto</th><th>Mensaje</th><th>IP</th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (empty($filtered_clientes)): ?>
-                    <tr><td colspan="8" style="text-align: center; padding: 20px; color: #888;">No hay registros de clientes.</td></tr>
+                    <tr><td colspan="9" style="text-align: center; padding: 20px; color: #888;">No hay registros de clientes.</td></tr>
                 <?php else: ?>
-                    <?php foreach($filtered_clientes as $r): ?>
-                    <tr>
+                    <?php foreach($filtered_clientes as $idx => $r): ?>
+                    <tr data-tipo="contacto" data-fecha="<?= htmlspecialchars(substr($r[0]??'', 0, 10), ENT_QUOTES, 'UTF-8') ?>" data-indice="<?= $idx ?>">
                         <td><?= htmlspecialchars($r[0]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td><?= htmlspecialchars($r[1]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td><span class="chip"><?= htmlspecialchars($r[2]??'',ENT_QUOTES,'UTF-8') ?></span></td>
                         <td><a class="mail" href="mailto:<?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?></a></td>
                         <td><?= htmlspecialchars($r[4]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td class="msg"><?= htmlspecialchars($r[5]??'',ENT_QUOTES,'UTF-8') ?></td>
-                        <td class="msg" title="<?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?></td>
+                        <td class="msg" title="<?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars(mb_substr($r[6]??'', 0, 50) . (mb_strlen($r[6]??'') > 50 ? '...' : ''), ENT_QUOTES, 'UTF-8') ?></td>
                         <td><?= htmlspecialchars($r[7]??'',ENT_QUOTES,'UTF-8') ?></td>
+                        <td class="acciones">
+                            <button class="btn-ver" onclick="verRegistro('contacto', <?= $idx ?>, <?= json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                <i class="fa-solid fa-eye"></i> Ver
+                            </button>
+                            <button class="btn-eliminar" onclick="eliminarRegistro('contacto', '<?= htmlspecialchars(substr($r[0]??'', 0, 10), ENT_QUOTES, 'UTF-8') ?>', <?= $idx ?>, <?= json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                <i class="fa-solid fa-trash"></i> Eliminar
+                            </button>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -282,19 +363,28 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
                         <th>Empresa</th>
                         <th>Correo</th>
                         <th>Mensaje</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($rows_cotizaciones)): ?>
-                        <tr><td colspan="5" style="text-align: center; padding: 20px; color: #888;">No hay registros de cotizaciones.</td></tr>
+                        <tr><td colspan="6" style="text-align: center; padding: 20px; color: #888;">No hay registros de cotizaciones.</td></tr>
                     <?php else: ?>
-                        <?php foreach($rows_cotizaciones as $cotizacion): ?>
-                        <tr>
+                        <?php foreach($rows_cotizaciones as $idx => $cotizacion): ?>
+                        <tr data-tipo="cotizacion" data-indice="<?= $idx ?>">
                             <td data-label="Fecha"><?= htmlspecialchars($cotizacion[0] ?? '') ?></td>
                             <td data-label="Nombre"><?= htmlspecialchars($cotizacion[1] ?? '') . ' ' . htmlspecialchars($cotizacion[2] ?? '') ?></td>
                             <td data-label="Empresa"><span class="chip"><?= htmlspecialchars($cotizacion[3] ?? '') ?></span></td>
                             <td data-label="Correo"><a class="mail" href="mailto:<?= htmlspecialchars($cotizacion[4] ?? '') ?>"><?= htmlspecialchars($cotizacion[4] ?? '') ?></a></td>
-                            <td data-label="Mensaje" class="msg" title="<?= htmlspecialchars($cotizacion[5] ?? '') ?>"><?= htmlspecialchars($cotizacion[5] ?? '') ?></td>
+                            <td data-label="Mensaje" class="msg" title="<?= htmlspecialchars($cotizacion[5] ?? '') ?>"><?= htmlspecialchars(mb_substr($cotizacion[5] ?? '', 0, 50) . (mb_strlen($cotizacion[5] ?? '') > 50 ? '...' : ''), ENT_QUOTES, 'UTF-8') ?></td>
+                            <td data-label="Acciones" class="acciones">
+                                <button class="btn-ver" onclick="verRegistro('cotizacion', <?= $idx ?>, <?= json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                    <i class="fa-solid fa-eye"></i> Ver
+                                </button>
+                                <button class="btn-eliminar" onclick="eliminarRegistro('cotizacion', '', <?= $idx ?>, <?= json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                </button>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -327,13 +417,16 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
     </div>
 </div>
 
-<script>
-window.onclick = function(event) {
-    var modal = document.getElementById('filesModal');
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+<div id="verModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fa-solid fa-eye"></i> Detalles del Registro</h2>
+            <span class="close" onclick="document.getElementById('verModal').style.display='none'">&times;</span>
+        </div>
+        <div id="verModalContent"></div>
+    </div>
+</div>
+
+<script src="/logs/js/panel.js"></script>
 </body>
 </html>
