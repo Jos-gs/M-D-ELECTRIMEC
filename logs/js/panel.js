@@ -106,7 +106,14 @@ function eliminarRegistro(tipo, fecha, indice, datos) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => {
+                throw new Error(data.message || 'Error en el servidor');
+            });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             alert('Registro eliminado correctamente');
@@ -117,7 +124,7 @@ function eliminarRegistro(tipo, fecha, indice, datos) {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Error al eliminar el registro');
+        alert('Error al eliminar el registro: ' + error.message);
     });
 }
 

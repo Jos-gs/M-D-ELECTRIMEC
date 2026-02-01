@@ -16,9 +16,16 @@ $tipo = $_POST['tipo'] ?? ''; // 'contacto' o 'cotizacion'
 $fecha = $_POST['fecha'] ?? '';
 $indice = intval($_POST['indice'] ?? -1);
 
-if (empty($tipo) || empty($fecha) || $indice < 0) {
+// Validar parámetros según el tipo
+if (empty($tipo) || $indice < 0) {
     http_response_code(400);
-    die(json_encode(['success' => false, 'message' => 'Parámetros inválidos']));
+    die(json_encode(['success' => false, 'message' => 'Parámetros inválidos: tipo o índice faltante']));
+}
+
+// Para contactos, la fecha es requerida
+if ($tipo === 'contacto' && empty($fecha)) {
+    http_response_code(400);
+    die(json_encode(['success' => false, 'message' => 'Parámetros inválidos: fecha requerida para contactos']));
 }
 
 header('Content-Type: application/json');
