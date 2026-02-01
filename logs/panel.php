@@ -178,7 +178,7 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="css/panel.css">
+<link rel="stylesheet" href="/logs/css/panel.css?v=<?= time() ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
@@ -427,6 +427,6 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
     </div>
 </div>
 
-<script src="js/panel.js"></script>
+<script src="/logs/js/panel.js?v=<?= time() ?>"></script>
 </body>
 </html>
