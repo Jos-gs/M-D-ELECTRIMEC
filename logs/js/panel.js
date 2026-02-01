@@ -127,6 +127,39 @@ function eliminarRegistro(tipo, fecha, indice, datos) {
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Asignar event listeners a los botones Ver
+    document.querySelectorAll('.btn-ver').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const tipo = this.getAttribute('data-tipo');
+            const indice = parseInt(this.getAttribute('data-indice'));
+            const datosJson = this.getAttribute('data-datos');
+            try {
+                const datos = JSON.parse(datosJson);
+                verRegistro(tipo, indice, datos);
+            } catch (e) {
+                console.error('Error al parsear datos:', e);
+                alert('Error al cargar los datos del registro');
+            }
+        });
+    });
+
+    // Asignar event listeners a los botones Eliminar
+    document.querySelectorAll('.btn-eliminar').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const tipo = this.getAttribute('data-tipo');
+            const fecha = this.getAttribute('data-fecha') || '';
+            const indice = parseInt(this.getAttribute('data-indice'));
+            const datosJson = this.getAttribute('data-datos');
+            try {
+                const datos = JSON.parse(datosJson);
+                eliminarRegistro(tipo, fecha, indice, datos);
+            } catch (e) {
+                console.error('Error al parsear datos:', e);
+                alert('Error al cargar los datos del registro');
+            }
+        });
+    });
+    
     // Manejo de modales - cerrar al hacer clic fuera
     window.onclick = function(event) {
         var modal = document.getElementById('filesModal');

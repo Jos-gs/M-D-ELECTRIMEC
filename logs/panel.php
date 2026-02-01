@@ -331,10 +331,10 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
                         <td><a class="mail" href="mailto:<?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?></a></td>
                         <td><?= htmlspecialchars($r[4]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td class="acciones">
-                            <button class="btn-ver" onclick="verRegistro('contacto', <?= $idx ?>, <?= json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                            <button class="btn-ver" data-tipo="contacto" data-indice="<?= $idx ?>" data-datos='<?= htmlspecialchars(json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8') ?>'>
                                 <i class="fa-solid fa-eye"></i> Ver
                             </button>
-                            <button class="btn-eliminar" onclick="eliminarRegistro('contacto', '<?= htmlspecialchars(substr($r[0]??'', 0, 10), ENT_QUOTES, 'UTF-8') ?>', <?= $idx ?>, <?= json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                            <button class="btn-eliminar" data-tipo="contacto" data-fecha="<?= htmlspecialchars(substr($r[0]??'', 0, 10), ENT_QUOTES, 'UTF-8') ?>" data-indice="<?= $idx ?>" data-datos='<?= htmlspecialchars(json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8') ?>'>
                                 <i class="fa-solid fa-trash"></i> Eliminar
                             </button>
                         </td>
@@ -379,10 +379,10 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
                             <td><a class="mail" href="mailto:<?= htmlspecialchars($cotizacion[4] ?? '') ?>"><?= htmlspecialchars($cotizacion[4] ?? '') ?></a></td>
                             <td>-</td>
                             <td class="acciones">
-                                <button class="btn-ver" onclick="verRegistro('cotizacion', <?= $idx ?>, <?= json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                <button class="btn-ver" data-tipo="cotizacion" data-indice="<?= $idx ?>" data-datos='<?= htmlspecialchars(json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8') ?>'>
                                     <i class="fa-solid fa-eye"></i> Ver
                                 </button>
-                                <button class="btn-eliminar" onclick="eliminarRegistro('cotizacion', '', <?= $idx ?>, <?= json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
+                                <button class="btn-eliminar" data-tipo="cotizacion" data-fecha="" data-indice="<?= $idx ?>" data-datos='<?= htmlspecialchars(json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8') ?>'>
                                     <i class="fa-solid fa-trash"></i> Eliminar
                                 </button>
                             </td>
