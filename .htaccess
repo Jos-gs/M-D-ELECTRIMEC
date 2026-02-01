@@ -1,0 +1,47 @@
+# Configuración de Apache para M&D ELECTRICMEC
+
+# Habilitar motor de reescritura
+RewriteEngine On
+
+# Configurar el archivo índice por defecto
+DirectoryIndex index.php index.html
+
+# Prevenir listado de directorios
+Options -Indexes
+
+# Asegurar que las rutas relativas funcionen correctamente
+RewriteBase /
+
+# Prevenir acceso a rutas del sistema de archivos
+RewriteCond %{REQUEST_URI} ^/var/www/html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/var/www [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Redirigir URLs sin extensión a archivos PHP si existen
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/var/www/html
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Redirigir index.php a / (raíz)
+RewriteCond %{THE_REQUEST} /index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Proteger archivos sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak)$">
+    Require all denied
+</FilesMatch>
+
+# Configuración de seguridad adicional
+<IfModule mod_headers.c>
+    # Prevenir clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    # Habilitar XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    # Content Security Policy más permisivo para Cloudflare y recursos externos
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://static.cloudflareinsights.com;"
+</IfModule>
+

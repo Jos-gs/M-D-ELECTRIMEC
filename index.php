@@ -12,21 +12,21 @@ file_put_contents($contador_file, $conteo_actual);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <base href="/">
     <title>M&D ELECTRICMEC S.A.C</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
-    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <header class="site-header">
     <div class="container">
         <div class="logo">
-            <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+            <a href="/">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
             </a>
         </div>
@@ -35,9 +35,9 @@ file_put_contents($contador_file, $conteo_actual);
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li><a href="nosotros.php">Nosotros</a></li>
-                <li><a href="proyectos.php">Proyectos</a></li>
-                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
+                <li><a href="/proyectos">Proyectos</a></li>
+                <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -70,7 +70,7 @@ file_put_contents($contador_file, $conteo_actual);
     <section id="nosotros" class="brochure">
         <div class="container">
             <div class="brochure-image">
-                 <img src="images/img2.png" alt="Equipo de M&D ELECTRICMEC trabajando">
+                 <img src="/images/img2.png" alt="Equipo de M&D ELECTRICMEC trabajando">
             </div>
             <div class="brochure-content">
                 <h2>Conoce un poco más de M&D ELECTRICMEC S.A.C.</h2>
@@ -150,12 +150,12 @@ file_put_contents($contador_file, $conteo_actual);
             <h2>Hemos realizado…</h2>
             <p>Diversos trabajos en empresas de prestigio como: HAUG S.A, CORMEI S.A.C, INVERCEM S.A., GreenCorp, Grupo Klaus, Dijisa Sac. <br>Así como en Centros médicos, residenciales, entre otros.</p>
             <div class="client-logos">
-                <div class="client-logo"><img src="images/e1.png" alt="Logo de Empresa Cliente 1"></div>
-                <div class="client-logo"><img src="images/e2.png" alt="Logo de Empresa Cliente 2"></div>
-                <div class="client-logo"><img src="images/e3.png" alt="Logo de Empresa Cliente 3"></div>
-                <div class="client-logo"><img src="images/e4.png" alt="Logo de Empresa Cliente 4"></div>
-                <div class="client-logo"><img src="images/e5.png" alt="Logo de Empresa Cliente 5"></div>
-                <div class="client-logo"><img src="images/e6.png" alt="Logo de Empresa Cliente 6"></div>
+                <div class="client-logo"><img src="/images/e1.png" alt="Logo de Empresa Cliente 1"></div>
+                <div class="client-logo"><img src="/images/e2.png" alt="Logo de Empresa Cliente 2"></div>
+                <div class="client-logo"><img src="/images/e3.png" alt="Logo de Empresa Cliente 3"></div>
+                <div class="client-logo"><img src="/images/e4.png" alt="Logo de Empresa Cliente 4"></div>
+                <div class="client-logo"><img src="/images/e5.png" alt="Logo de Empresa Cliente 5"></div>
+                <div class="client-logo"><img src="/images/e6.png" alt="Logo de Empresa Cliente 6"></div>
             </div>
         </div>
     </section>
@@ -166,17 +166,17 @@ file_put_contents($contador_file, $conteo_actual);
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
                 <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="nosotros.php">Nosotros</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                    <li><a href="/proyectos">Proyectos</a></li>
+                    <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -196,7 +196,7 @@ file_put_contents($contador_file, $conteo_actual);
     </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/51928612796" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">

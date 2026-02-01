@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <base href="/">
   <title>M&D ELECTRICMEC S.A.C</title>
-  <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="shortcut icon" href="images/logo.png" type="image/png">
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,16 +14,16 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/contacto.css?v=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/contacto.css?v=1">
 </head>
 <body>
 
 <header class="site-header">
     <div class="container">
         <div class="logo">
-            <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+            <a href="/">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
             </a>
         </div>
@@ -32,14 +32,14 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li><a href="nosotros.php">Nosotros</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
                 <!-- <li class="has-submenu">
                     <a href="#">Negocios </a>
                     
                 </li> -->
-                <li><a href="proyectos.php">Proyectos</a></li>
+                <li><a href="/proyectos">Proyectos</a></li>
                 <!-- <li><a href="#">Noticias</a></li> -->
-                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -134,17 +134,17 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
                 <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="nosotros.php">Nosotros</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                    <li><a href="/proyectos">Proyectos</a></li>
+                    <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -165,7 +165,7 @@
 </footer>
 
 <!-- JS -->
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 (function(){

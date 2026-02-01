@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <base href="/">
     <title>Nosotros - M&D ELECTRICMEC S.A.C</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
-    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,17 +14,17 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
-    <link rel="stylesheet" href="css/nosotros.css">
+    <link rel="stylesheet" href="/css/nosotros.css">
 </head>
 <body>
 
 <header class="site-header">
     <div class="container">
         <div class="logo">
-            <a href="index.php">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+            <a href="/">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
             </a>
         </div>
@@ -33,14 +33,14 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu">
-                <li><a href="nosotros.php">Nosotros</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
                 <!-- <li class="has-submenu">
                     <a href="#">Negocios </a>
                     
                 </li> -->
-                <li><a href="proyectos.php">Proyectos</a></li>
+                <li><a href="/proyectos">Proyectos</a></li>
                 <!-- <li><a href="#">Noticias</a></li> -->
-                <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
@@ -54,7 +54,7 @@
                     <h3 class="subtitle">En <strong>M&D ELECTRICMEC S.A.C</strong>, somos una empresa con trayectoria en el mantenimiento, diseño e instalación de equipos eléctricos y mecánicos. Nuestra estructura ágil nos permite adaptarnos y ofrecer un servicio eficiente y de máxima calidad.</h3>
                 </div>
                 <div class="about-image">
-                    <img src="images/img1.png" alt="Equipo de M&D ELECTRICMEC trabajando">
+                    <img src="/images/img1.png" alt="Equipo de M&D ELECTRICMEC trabajando">
                 </div>
             </div>
 
@@ -111,17 +111,17 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
                 <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="nosotros.php">Nosotros</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="contacto.php">Trabaja con Nosotros</a></li>
+                    <li><a href="/proyectos">Proyectos</a></li>
+                    <li><a href="/contacto">Trabaja con Nosotros</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -140,7 +140,7 @@
         </div>
     </div>
 </footer>
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/51928612796" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
