@@ -46,14 +46,22 @@ RUN touch /var/www/html/contador_visitas.txt \
 RUN echo '#!/bin/bash' > /usr/local/bin/start-apache.sh && \
     echo 'set -e' >> /usr/local/bin/start-apache.sh && \
     echo '' >> /usr/local/bin/start-apache.sh && \
-    echo '# Verifica que solo un MPM esté habilitado' >> /usr/local/bin/start-apache.sh && \
+    echo '# CRÍTICO: Asegurar que solo un MPM esté habilitado' >> /usr/local/bin/start-apache.sh && \
+    echo 'echo "Verificando configuración de MPM..."' >> /usr/local/bin/start-apache.sh && \
+    echo '# Deshabilitar TODOS los MPMs primero' >> /usr/local/bin/start-apache.sh && \
+    echo 'a2dismod mpm_event mpm_worker mpm_prefork 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
+    echo '# Eliminar cualquier enlace simbólico de MPM que pueda existir' >> /usr/local/bin/start-apache.sh && \
+    echo 'rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
+    echo '# Habilitar solo mpm_prefork' >> /usr/local/bin/start-apache.sh && \
+    echo 'a2enmod mpm_prefork' >> /usr/local/bin/start-apache.sh && \
+    echo '# Verificar que solo un MPM esté habilitado' >> /usr/local/bin/start-apache.sh && \
     echo 'MPM_COUNT=$(ls -1 /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null | wc -l)' >> /usr/local/bin/start-apache.sh && \
-    echo 'if [ "$MPM_COUNT" -gt 1 ]; then' >> /usr/local/bin/start-apache.sh && \
-    echo '  echo "ERROR: Multiple MPMs detected. Disabling all and enabling only prefork..."' >> /usr/local/bin/start-apache.sh && \
-    echo '  a2dismod mpm_event mpm_worker 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
-    echo '  rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load 2>/dev/null || true' >> /usr/local/bin/start-apache.sh && \
-    echo '  a2enmod mpm_prefork' >> /usr/local/bin/start-apache.sh && \
+    echo 'if [ "$MPM_COUNT" -ne 1 ]; then' >> /usr/local/bin/start-apache.sh && \
+    echo '  echo "ERROR: Se encontraron $MPM_COUNT módulos MPM. Debe haber exactamente 1."' >> /usr/local/bin/start-apache.sh && \
+    echo '  ls -la /etc/apache2/mods-enabled/mpm_* || true' >> /usr/local/bin/start-apache.sh && \
+    echo '  exit 1' >> /usr/local/bin/start-apache.sh && \
     echo 'fi' >> /usr/local/bin/start-apache.sh && \
+    echo 'echo "MPM configurado correctamente: $(ls /etc/apache2/mods-enabled/mpm_*.load | xargs basename)"' >> /usr/local/bin/start-apache.sh && \
     echo '' >> /usr/local/bin/start-apache.sh && \
     echo '# Obtiene el puerto de la variable de entorno PORT (Railway lo proporciona)' >> /usr/local/bin/start-apache.sh && \
     echo 'PORT=${PORT:-8000}' >> /usr/local/bin/start-apache.sh && \
@@ -80,3 +88,15 @@ RUN echo "error_reporting = E_ALL\n\
 display_errors = On\n\
 date.timezone = America/Lima" > /usr/local/etc/php/conf.d/docker-php-custom.ini
 
+# Configura AllowOverride para permitir .htaccess
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
+# Configura Apache para no exponer información del servidor en errores
+RUN echo "ServerTokens Prod" >> /etc/apache2/apache2.conf && \
+    echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+
+# Asegurar que mod_headers esté habilitado para las cabeceras de seguridad
+RUN a2enmod headers
+
+# Inicia Apache usando el script que configura el puerto dinámicamente
+CMD ["/usr/local/bin/start-apache.sh"]
