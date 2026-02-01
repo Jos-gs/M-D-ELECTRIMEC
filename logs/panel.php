@@ -183,7 +183,7 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
-<div class="c-wrap container">
+<div class="c-wrap container" style="max-width: 100%; width: 100%; padding: 20px; box-sizing: border-box;">
     <div class="c-top">
         <div>
             <h1 class="c-title">Clientes</h1>
@@ -311,24 +311,25 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
         <table class="c-table">
             <thead>
                 <tr>
-                    <th>Fecha</th><th>Nombre</th><th>Empresa</th><th>Correo</th>
-                    <th>Teléfono</th><th>Asunto</th><th>Mensaje</th><th>IP</th><th>Acciones</th>
+                    <th>Fecha</th>
+                    <th>Nombre</th>
+                    <th>Empresa</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (empty($filtered_clientes)): ?>
-                    <tr><td colspan="9" style="text-align: center; padding: 20px; color: #888;">No hay registros de clientes.</td></tr>
+                    <tr><td colspan="6" style="text-align: center; padding: 20px; color: #888;">No hay registros de clientes.</td></tr>
                 <?php else: ?>
                     <?php foreach($filtered_clientes as $idx => $r): ?>
                     <tr data-tipo="contacto" data-fecha="<?= htmlspecialchars(substr($r[0]??'', 0, 10), ENT_QUOTES, 'UTF-8') ?>" data-indice="<?= $idx ?>">
                         <td><?= htmlspecialchars($r[0]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td><?= htmlspecialchars($r[1]??'',ENT_QUOTES,'UTF-8') ?></td>
-                        <td><span class="chip"><?= htmlspecialchars($r[2]??'',ENT_QUOTES,'UTF-8') ?></span></td>
+                        <td><span class="chip"><?= htmlspecialchars($r[2]??'',ENT_QUOTES,'UTF-8') ?: '-' ?></span></td>
                         <td><a class="mail" href="mailto:<?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars($r[3]??'',ENT_QUOTES,'UTF-8') ?></a></td>
                         <td><?= htmlspecialchars($r[4]??'',ENT_QUOTES,'UTF-8') ?></td>
-                        <td class="msg"><?= htmlspecialchars($r[5]??'',ENT_QUOTES,'UTF-8') ?></td>
-                        <td class="msg" title="<?= htmlspecialchars($r[6]??'',ENT_QUOTES,'UTF-8') ?>"><?= htmlspecialchars(mb_substr($r[6]??'', 0, 50) . (mb_strlen($r[6]??'') > 50 ? '...' : ''), ENT_QUOTES, 'UTF-8') ?></td>
-                        <td><?= htmlspecialchars($r[7]??'',ENT_QUOTES,'UTF-8') ?></td>
                         <td class="acciones">
                             <button class="btn-ver" onclick="verRegistro('contacto', <?= $idx ?>, <?= json_encode($r, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
                                 <i class="fa-solid fa-eye"></i> Ver
@@ -359,10 +360,10 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
                 <thead>
                     <tr>
                         <th>Fecha</th>
-                        <th>Nombre Completo</th>
+                        <th>Nombre</th>
                         <th>Empresa</th>
                         <th>Correo</th>
-                        <th>Mensaje</th>
+                        <th>Teléfono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -372,12 +373,12 @@ $tasa_conversion = $mesCnt > 0 ? round(($cotizaciones_mes / $mesCnt) * 100, 1) :
                     <?php else: ?>
                         <?php foreach($rows_cotizaciones as $idx => $cotizacion): ?>
                         <tr data-tipo="cotizacion" data-indice="<?= $idx ?>">
-                            <td data-label="Fecha"><?= htmlspecialchars($cotizacion[0] ?? '') ?></td>
-                            <td data-label="Nombre"><?= htmlspecialchars($cotizacion[1] ?? '') . ' ' . htmlspecialchars($cotizacion[2] ?? '') ?></td>
-                            <td data-label="Empresa"><span class="chip"><?= htmlspecialchars($cotizacion[3] ?? '') ?></span></td>
-                            <td data-label="Correo"><a class="mail" href="mailto:<?= htmlspecialchars($cotizacion[4] ?? '') ?>"><?= htmlspecialchars($cotizacion[4] ?? '') ?></a></td>
-                            <td data-label="Mensaje" class="msg" title="<?= htmlspecialchars($cotizacion[5] ?? '') ?>"><?= htmlspecialchars(mb_substr($cotizacion[5] ?? '', 0, 50) . (mb_strlen($cotizacion[5] ?? '') > 50 ? '...' : ''), ENT_QUOTES, 'UTF-8') ?></td>
-                            <td data-label="Acciones" class="acciones">
+                            <td><?= htmlspecialchars($cotizacion[0] ?? '') ?></td>
+                            <td><?= htmlspecialchars($cotizacion[1] ?? '') . ' ' . htmlspecialchars($cotizacion[2] ?? '') ?></td>
+                            <td><span class="chip"><?= htmlspecialchars($cotizacion[3] ?? '') ?: '-' ?></span></td>
+                            <td><a class="mail" href="mailto:<?= htmlspecialchars($cotizacion[4] ?? '') ?>"><?= htmlspecialchars($cotizacion[4] ?? '') ?></a></td>
+                            <td>-</td>
+                            <td class="acciones">
                                 <button class="btn-ver" onclick="verRegistro('cotizacion', <?= $idx ?>, <?= json_encode($cotizacion, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)">
                                     <i class="fa-solid fa-eye"></i> Ver
                                 </button>

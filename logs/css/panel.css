@@ -86,7 +86,10 @@
 
 /* Wrapper */
 .c-wrap {
-	padding: 28px 0
+	padding: 28px 0;
+	max-width: 100%;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 /* Top bar */
@@ -209,13 +212,16 @@
 	border: 1px solid #e7e7e7;
 	border-radius: 16px;
 	box-shadow: var(--box-shadow);
-	overflow: auto
+	overflow: auto;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .c-table {
 	width: 100%;
 	border-collapse: separate;
-	border-spacing: 0
+	border-spacing: 0;
+	table-layout: auto;
 }
 
 .c-table thead th {
@@ -225,16 +231,19 @@
 	background: var(--primary-color);
 	color: #fff;
 	text-align: left;
-	padding: 12px 14px;
-	font-weight: 600
+	padding: 14px 16px;
+	font-weight: 600;
+	white-space: nowrap;
 }
 
 .c-table tbody td {
-	padding: 12px 14px;
+	padding: 14px 16px;
 	border-top: 1px solid #f0f2f6;
 	font-size: .95rem;
 	color: var(--dark-grey);
-	background: #fff
+	background: #fff;
+	word-wrap: break-word;
+	max-width: 200px;
 }
 
 .c-table tbody tr:nth-child(odd) td {
@@ -728,10 +737,11 @@
 .acciones {
     white-space: nowrap;
     text-align: center;
+    min-width: 150px;
 }
 .acciones button {
     margin: 0 4px;
-    padding: 6px 12px;
+    padding: 8px 14px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -741,6 +751,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    min-width: 80px;
+    justify-content: center;
 }
 .btn-ver {
     background-color: #003366;
@@ -775,11 +787,13 @@
 }
 #verModal .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: 3% auto;
     padding: 30px;
     border: none;
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.3);
 }
@@ -826,6 +840,8 @@
     color: #333;
     font-size: 1rem;
     line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* ==========================================================================
@@ -839,6 +855,8 @@
     box-shadow: var(--box-shadow);
     border: 1px solid #e7e7e7;
     padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dashboard-header {
@@ -866,6 +884,8 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dashboard-card {
