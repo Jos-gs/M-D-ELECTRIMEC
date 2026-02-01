@@ -38,7 +38,6 @@ file_put_contents($contador_file, $conteo_actual);
                 <li><a href="/nosotros">Nosotros</a></li>
                 <li><a href="/proyectos">Proyectos</a></li>
                 <li><a href="/contacto">Trabaja con Nosotros</a></li>
-                <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
             </ul>
         </nav>
     </div>
