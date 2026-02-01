@@ -1,53 +1,18 @@
 // Panel de Intranet - JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Manejo de modales
-    window.onclick = function(event) {
-        var modal = document.getElementById('filesModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        var verModal = document.getElementById('verModal');
-        if (event.target == verModal) {
-            verModal.style.display = "none";
-        }
-    };
 
-    // Cerrar modal con ESC
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            const verModal = document.getElementById('verModal');
-            if (verModal) {
-                verModal.style.display = "none";
-            }
-            const filesModal = document.getElementById('filesModal');
-            if (filesModal) {
-                filesModal.style.display = "none";
-            }
-        }
-    });
-
-    // Inicializar gráficos del dashboard si existen
-    if (typeof Chart !== 'undefined') {
-        setTimeout(initDashboardCharts, 100);
-    } else {
-        // Si Chart.js no está cargado, intentar de nuevo después de un momento
-        setTimeout(function() {
-            if (typeof Chart !== 'undefined') {
-                initDashboardCharts();
-            } else {
-                console.warn('Chart.js no está disponible. Los gráficos no se mostrarán.');
-            }
-        }, 500);
-    }
-});
+// ==========================================================================
+// FUNCIONES GLOBALES (deben estar disponibles para onclick)
+// ==========================================================================
 
 // Función para ver registro en modal
 function verRegistro(tipo, indice, datos) {
     const modal = document.getElementById('verModal');
     const contenido = document.getElementById('verModalContent');
     
-    if (!modal || !contenido) return;
+    if (!modal || !contenido) {
+        console.error('Modal no encontrado');
+        return;
+    }
     
     let html = '';
     
@@ -156,6 +121,57 @@ function eliminarRegistro(tipo, fecha, indice, datos) {
     });
 }
 
+// ==========================================================================
+// INICIALIZACIÓN CUANDO EL DOM ESTÉ LISTO
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Manejo de modales - cerrar al hacer clic fuera
+    window.onclick = function(event) {
+        var modal = document.getElementById('filesModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        var verModal = document.getElementById('verModal');
+        if (event.target == verModal) {
+            verModal.style.display = "none";
+        }
+    };
+
+    // Cerrar modal con ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const verModal = document.getElementById('verModal');
+            if (verModal) {
+                verModal.style.display = "none";
+            }
+            const filesModal = document.getElementById('filesModal');
+            if (filesModal) {
+                filesModal.style.display = "none";
+            }
+        }
+    });
+
+    // Inicializar gráficos del dashboard si existen
+    if (typeof Chart !== 'undefined') {
+        setTimeout(initDashboardCharts, 100);
+    } else {
+        // Si Chart.js no está cargado, intentar de nuevo después de un momento
+        setTimeout(function() {
+            if (typeof Chart !== 'undefined') {
+                initDashboardCharts();
+            } else {
+                console.warn('Chart.js no está disponible. Los gráficos no se mostrarán.');
+            }
+        }, 500);
+    }
+});
+
+// ==========================================================================
+// FUNCIONES PARA GRÁFICOS DEL DASHBOARD
+// ==========================================================================
+
 // Inicializar gráficos del dashboard
 function initDashboardCharts() {
     if (typeof Chart === 'undefined') {
@@ -171,35 +187,35 @@ function initDashboardCharts() {
         try {
             const datosDias = JSON.parse(ctxDias.getAttribute('data-chart') || '{}');
             new Chart(ctxDias, {
-            type: 'line',
-            data: {
-                labels: Object.keys(datosDias),
-                datasets: [{
-                    label: 'Registros',
-                    data: Object.values(datosDias),
-                    borderColor: '#003366',
-                    backgroundColor: 'rgba(0, 51, 102, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+                type: 'line',
+                data: {
+                    labels: Object.keys(datosDias),
+                    datasets: [{
+                        label: 'Registros',
+                        data: Object.values(datosDias),
+                        borderColor: '#003366',
+                        backgroundColor: 'rgba(0, 51, 102, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
-            }
             });
         } catch (e) {
             console.error('Error al crear gráfico de días:', e);
@@ -212,34 +228,34 @@ function initDashboardCharts() {
         try {
             const datosHora = JSON.parse(ctxHora.getAttribute('data-chart') || '[]');
             new Chart(ctxHora, {
-            type: 'bar',
-            data: {
-                labels: Array.from({length: 24}, (_, i) => i + ':00'),
-                datasets: [{
-                    label: 'Registros',
-                    data: datosHora,
-                    backgroundColor: '#FF6600',
-                    borderColor: '#e65c00',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+                type: 'bar',
+                data: {
+                    labels: Array.from({length: 24}, (_, i) => i + ':00'),
+                    datasets: [{
+                        label: 'Registros',
+                        data: datosHora,
+                        backgroundColor: '#FF6600',
+                        borderColor: '#e65c00',
+                        borderWidth: 1
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
-            }
             });
         } catch (e) {
             console.error('Error al crear gráfico de horas:', e);
@@ -252,38 +268,38 @@ function initDashboardCharts() {
         try {
             const datosMes = JSON.parse(ctxMes.getAttribute('data-chart') || '{}');
             new Chart(ctxMes, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(datosMes).map(m => {
-                    const [year, month] = m.split('-');
-                    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-                    return meses[parseInt(month) - 1] + ' ' + year;
-                }),
-                datasets: [{
-                    label: 'Registros',
-                    data: Object.values(datosMes),
-                    backgroundColor: '#003366',
-                    borderColor: '#004488',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+                type: 'bar',
+                data: {
+                    labels: Object.keys(datosMes).map(m => {
+                        const [year, month] = m.split('-');
+                        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                        return meses[parseInt(month) - 1] + ' ' + year;
+                    }),
+                    datasets: [{
+                        label: 'Registros',
+                        data: Object.values(datosMes),
+                        backgroundColor: '#003366',
+                        borderColor: '#004488',
+                        borderWidth: 1
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
-            }
             });
         } catch (e) {
             console.error('Error al crear gráfico de meses:', e);
@@ -299,37 +315,36 @@ function initDashboardCharts() {
             const values = Object.values(datosEmpresas).slice(0, 10);
             
             new Chart(ctxEmpresas, {
-            type: 'doughnut',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: values,
-                    backgroundColor: [
-                        '#003366', '#FF6600', '#0b5ed7', '#5a5a5a', '#28a745',
-                        '#17a2b8', '#ffc107', '#dc3545', '#6f42c1', '#e83e8c'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            boxWidth: 12,
-                            padding: 10,
-                            font: {
-                                size: 11
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            '#003366', '#FF6600', '#0b5ed7', '#5a5a5a', '#28a745',
+                            '#17a2b8', '#ffc107', '#dc3545', '#6f42c1', '#e83e8c'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: {
+                                    size: 11
+                                }
                             }
                         }
                     }
                 }
-            }
             });
         } catch (e) {
             console.error('Error al crear gráfico de empresas:', e);
         }
     }
 }
-
