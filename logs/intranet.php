@@ -7,37 +7,38 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<base href="/logs/">
 <title>Intranet — Acceso</title>
-<link rel="icon" href="../images/logo.png" type="image/png">
-<link rel="shortcut icon" href="../images/logo.png" type="image/png">
+<link rel="icon" href="/images/logo.png" type="image/png">
+<link rel="shortcut icon" href="/images/logo.png" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/contacto.css">
-<link rel="stylesheet" href="css/intranet.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/contacto.css">
+<link rel="stylesheet" href="/logs/css/intranet.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
     <div class="logo">
-      <a href="../index.php">
-        <img src="../images/logo.png" alt="M&D ELECTRICMEC Logo">
+      <a href="/">
+        <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
         <span>M&D ELECTRICMEC</span>
       </a>
     </div>
     <nav class="main-nav">
       <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
       <ul class="nav-menu">
-        <li><a href="../nosotros.php">Nosotros</a></li>
+        <li><a href="/nosotros">Nosotros</a></li>
         <!-- <li class="has-submenu"><a href="#">Negocios</a></li> -->
-        <li><a href="../proyectos.php">Proyectos</a></li>
+        <li><a href="/proyectos">Proyectos</a></li>
         <!-- <li><a href="#">Noticias</a></li> -->
-        <li><a href="../contacto.php">Contacto</a></li>
-        <li><a class="btn intranet" href="intranet.php">Intranet ›</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+        <li><a class="btn intranet" href="/logs/intranet.php">Intranet ›</a></li>
       </ul>
     </nav>
   </div>
@@ -69,7 +70,7 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
       </div>
 
       <div class="login-form-wrap">
-        <form class="login-form" method="post" action="login.php" autocomplete="off">
+        <form class="login-form" method="post" action="/logs/login.php" autocomplete="off">
           <div class="form-row">
             <label for="user">Usuario</label>
             <input id="user" name="user" type="text" required>
@@ -95,17 +96,17 @@ if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="../images/logo.png" alt="M&D ELECTRICMEC Logo">
+                <img src="/images/logo.png" alt="M&D ELECTRICMEC Logo">
                 <span>M&D ELECTRICMEC</span>
                 <p>Mantenimiento y diseño eléctrico - mecánico</p>
             </div>
             <div class="footer-links">
                 <h4>Navegación</h4>
                 <ul>
-                    <li><a href="nosotros.php">Nosotros</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                     <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Proyectos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/proyectos">Proyectos</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-contact">

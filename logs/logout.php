@@ -2,4 +2,4 @@
 session_start();
 $_SESSION = [];
 session_destroy();
-header('Location: intranet.php'); exit;
+header('Location: /logs/intranet.php'); exit;

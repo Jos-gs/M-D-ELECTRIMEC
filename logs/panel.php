@@ -2,7 +2,7 @@
 session_start();
 // Asegúrate de que config.php exista en el mismo directorio (/logs)
 require __DIR__ . '/config.php'; 
-if (empty($_SESSION['auth'])) { header('Location: intranet.php'); exit; }
+if (empty($_SESSION['auth'])) { header('Location: /logs/intranet.php'); exit; }
 
 /* ==========================================================================
    CARGA DE DATOS PARA LA PRIMERA TABLA ("CLIENTES")
@@ -102,12 +102,13 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Clientes — Intranet</title>
-<link rel="icon" href="../images/logo.png" type="image/png">
-<link rel="shortcut icon" href="../images/logo.png" type="image/png">
+<base href="/logs/">
+<link rel="icon" href="/images/logo.png" type="image/png">
+<link rel="shortcut icon" href="/images/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/panel.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/logs/css/panel.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* Estilos para el modal y la nueva tabla */
@@ -202,11 +203,11 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
             <form class="c-search" method="get">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search" name="q" placeholder="Buscar nombre, empresa, correo…" value="<?= htmlspecialchars($q,ENT_QUOTES,'UTF-8') ?>">
-                <?php if ($q!=='' || $fdate!==''): ?><a class="btn-clean" href="panel.php">Limpiar</a><?php endif; ?>
+                <?php if ($q!=='' || $fdate!==''): ?><a class="btn-clean" href="/logs/panel.php">Limpiar</a><?php endif; ?>
             </form>
-            <a class="btn-primary" href="export_clientes.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>"><i class="fa-solid fa-file-excel"></i> Descargar Excel</a>
+            <a class="btn-primary" href="/logs/export_clientes.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>"><i class="fa-solid fa-file-excel"></i> Descargar Excel</a>
             <button class="btn-secondary" onclick="document.getElementById('filesModal').style.display='block';"><i class="fa-solid fa-folder-open"></i> Archivos</button>
-            <a class="btn-secondary" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Salir</a>
+            <a class="btn-secondary" href="/logs/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Salir</a>
         </div>
     </div>
     <div class="c-kpis">
@@ -225,7 +226,7 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
                     <option value="<?= htmlspecialchars($date) ?>" <?= $date === $fdate ? 'selected' : '' ?>><?= htmlspecialchars($date) ?> (<?= date('d/M', strtotime($date)) ?>)</option>
                 <?php endforeach; ?>
             </select>
-            <?php if ($fdate !== ''): ?><a href="panel.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>" class="btn-clean">Limpiar Filtro</a><?php endif; ?>
+            <?php if ($fdate !== ''): ?><a href="/logs/panel.php<?= $q!==''?('?q='.urlencode($q)) : '' ?>" class="btn-clean">Limpiar Filtro</a><?php endif; ?>
             <?php if ($q !== ''): ?><input type="hidden" name="q" value="<?= htmlspecialchars($q) ?>"><?php endif; ?>
         </form>
     </div>
@@ -319,7 +320,7 @@ $conteo_actual = file_exists($contador_file) ? (int)file_get_contents($contador_
             <?php else: ?>
                 <p>⚠️ Asegúrate de tener el archivo <code>download.php</code> para descargar.</p>
                 <?php foreach($file_names as $file): ?>
-                    <a href="download.php?f=<?= urlencode($file) ?>"><i class="fa-solid fa-file-csv"></i> <?= htmlspecialchars($file) ?></a>
+                    <a href="/logs/download.php?f=<?= urlencode($file) ?>"><i class="fa-solid fa-file-csv"></i> <?= htmlspecialchars($file) ?></a>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>

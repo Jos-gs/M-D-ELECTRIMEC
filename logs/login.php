@@ -7,6 +7,6 @@ $pass = $_POST['pass'] ?? '';
 
 if ($user === APP_USER && password_verify($pass, APP_PASS_HASH)) {
   $_SESSION['auth'] = true;
-  header('Location: panel.php'); exit;
+  header('Location: /logs/panel.php'); exit;
 }
-header('Location: intranet.php?e=1'); exit;
+header('Location: /logs/intranet.php?e=1'); exit;
