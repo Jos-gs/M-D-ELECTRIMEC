@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!empty($_SESSION['auth'])) { header('Location: panel.php'); exit; }
+if (!empty($_SESSION['auth'])) { header('Location: /logs/panel.php'); exit; }
 ?>
 <!doctype html>
 <html lang="es">

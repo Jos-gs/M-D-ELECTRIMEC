@@ -12,8 +12,23 @@ Options -Indexes
 # Asegurar que las rutas relativas funcionen correctamente
 RewriteBase /
 
-# Prevenir acceso a rutas del sistema de archivos
-RewriteCond %{REQUEST_URI} ^/var/www/html [NC,OR]
+# Redirigir rutas incorrectas del sistema de archivos que contienen /logs/logs/ a la ruta correcta
+RewriteCond %{REQUEST_URI} ^/var/www/html/logs/logs/(.*) [NC]
+RewriteRule ^(.*)$ /logs/%1 [R=301,L]
+
+# Redirigir rutas incorrectas del sistema de archivos que contienen /logs/ a la ruta correcta
+RewriteCond %{REQUEST_URI} ^/var/www/html/logs/(.*) [NC]
+RewriteRule ^(.*)$ /logs/%1 [R=301,L]
+
+# Redirigir rutas incorrectas del sistema de archivos que contienen /index a la raíz
+RewriteCond %{REQUEST_URI} ^/var/www/html/index [NC]
+RewriteRule ^(.*)$ / [R=301,L]
+
+# Redirigir cualquier otra ruta del sistema de archivos a la raíz
+RewriteCond %{REQUEST_URI} ^/var/www/html/(.*) [NC]
+RewriteRule ^(.*)$ /%1 [R=301,L]
+
+# Bloquear cualquier otra ruta del sistema de archivos que no coincida
 RewriteCond %{REQUEST_URI} ^/var/www [NC]
 RewriteRule ^(.*)$ - [F,L]
 
